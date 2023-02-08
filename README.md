@@ -2,7 +2,7 @@
 A little Tool to make it easier for us to check videos against some set of configurations
 
 # development methodology
-  - build out the login in the library folder and the tests folder, using a test first approach
+  - build out the logic in the library folder and the tests folder, using a test first approach
   - when we have got all the logic out with a reasonable API, build out the console app
   - needs to work cross platform as this will end up being used by people and possibly on a server
   
