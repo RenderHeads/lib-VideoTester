@@ -8,4 +8,12 @@
   <ItemGroup>
     <ProjectReference Include="..\LibVideoTester\LibVideoTester.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Serilog" />
+    <None Remove="Serilog.Sinks.Console" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+  </ItemGroup>
 </Project>

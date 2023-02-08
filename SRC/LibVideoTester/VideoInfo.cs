@@ -9,6 +9,8 @@ namespace LibVideoTester
         private int _height;
         private int _bitrateKPBS;
         private int _frameRate;
+
+    
         
         public VideoInfo(string codec, int width, int height, int frameRate, int bitrateKBPS)
         {
@@ -56,7 +58,30 @@ namespace LibVideoTester
             return _bitrateKPBS <= c.GetMaxBitRateKBPS();
         }
 
- 
+        public int GetWidth()
+        {
+            return _width;
+        }
+
+        public int GetHeight()
+        {
+            return _height;
+        }
+
+        public int GetBitrate()
+        {
+            return _bitrateKPBS;
+        }
+
+        public int GetFramerate()
+        {
+            return _frameRate;
+        }
+
+        public string GetCodec()
+        {
+            return _codec;
+        }
     }
 }
 

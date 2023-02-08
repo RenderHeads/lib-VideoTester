@@ -27,7 +27,7 @@ namespace LibVideoTester
             _metaDataGenerator = metaDataGenreator;
         }
 
-        public async Task<VideoInfo> GetVideoInfo(string filename)
+        public async Task<VideoInfo> GetVideoInfoAsync(string filename)
         {
             string medataData = await _metaDataGenerator.GetMetaDataFromFile(filename);
             string[] lines = medataData.Split(System.Environment.NewLine);
