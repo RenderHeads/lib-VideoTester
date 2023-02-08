@@ -10,12 +10,10 @@ namespace LibVideoTester
         public Configuration(string[] validCodecs, int maxWidth, int maxHeight, int[] frameRates, int maxBirateKBPS)
         {
             _validCodecs = validCodecs;
-            _maxWidth = maxHeight;
+            _maxWidth = maxWidth;
             _maxHeight = maxHeight;
             _frameRates = frameRates;
-            _maxBitRateKBPS = maxBirateKBPS;
-
-     
+            _maxBitRateKBPS = maxBirateKBPS; 
         }
 
         public int GetMaxWidth()

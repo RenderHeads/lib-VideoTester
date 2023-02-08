@@ -55,6 +55,8 @@ namespace LibVideoTester
         {
             return _bitrateKPBS <= c.GetMaxBitRateKBPS();
         }
+
+ 
     }
 }
 
