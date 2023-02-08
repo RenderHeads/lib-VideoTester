@@ -19,14 +19,6 @@ namespace VideoTesterTests
             
         }
 
-        [Test]
-        public void shouldReturnTrueIfHapAndFileSizeDivizibleBy4()
-        {
-            string[] validCodecs = new string[] { "hap", "h264", "hevc", "hapa" };
-            Configuration c = new Configuration(validCodecs,500,500, new int[] { 30 }, 1024);
-            VideoInfo v = new VideoInfo("hap", 400,400,0,0);
-            Assert.IsTrue(v.ResolutionValid(c));
-        }
 
         [Test]
         public void shouldReturnTrueIfWithinValidResolution()
@@ -37,6 +29,14 @@ namespace VideoTesterTests
             Assert.IsTrue(v.ResolutionValid(c));
         }
 
+        [Test]
+        public void shouldReturnFalseIfHapNotDivisbleBy4()
+        {
+            string[] validCodecs = new string[] { "hap", "h264", "hevc", "hapa" };
+            Configuration c = new Configuration(validCodecs, 500, 500, new int[] { 30 }, 1024);
+            VideoInfo v = new VideoInfo("hap", 123, 400, 30, 1024);
+            Assert.IsFalse(v.ResolutionValid(c));
+        }
 
         [Test]
         public void shouldHaveValidConfig()

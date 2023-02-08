@@ -9,6 +9,7 @@ namespace LibVideoTester
         private int _height;
         private int _bitrateKPBS;
         private int _frameRate;
+        
         public VideoInfo(string codec, int width, int height, int frameRate, int bitrateKBPS)
         {
             _codec = codec;
@@ -18,6 +19,11 @@ namespace LibVideoTester
             _bitrateKPBS = bitrateKBPS;
         }
 
+        //TODO: Refactor this to something better, we don't actually know what hap codec will be presented as, and there are a few options of hap
+        public bool IsHap()
+        {
+            return _codec == "hap";
+        }
 
         public bool CodecValid(Configuration c)
         {
@@ -27,7 +33,7 @@ namespace LibVideoTester
         public bool ResolutionValid(Configuration c)
         {
             bool withinRange = _width <= c.GetMaxWidth() && _height <= c.GetMaxHeight();
-            if (_codec == "hap")
+            if (IsHap())
             {
                 return _width % 4 == 0 && _height % 4 == 0 && withinRange;
             }
