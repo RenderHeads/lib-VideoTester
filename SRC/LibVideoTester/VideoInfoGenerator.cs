@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace LibVideoTester
 {
@@ -15,7 +16,7 @@ namespace LibVideoTester
     /// </summary>
     /// <param name="filename">the file name to check against</param>
     /// <returns></returns>
-        string GetMetaDataFromFile(string filename);
+        Task<string> GetMetaDataFromFile(string filename);
     }
 
     public class VideoInfoGenerator
@@ -26,9 +27,9 @@ namespace LibVideoTester
             _metaDataGenerator = metaDataGenreator;
         }
 
-        public VideoInfo GetVideoInfo(string filename)
+        public async Task<VideoInfo> GetVideoInfo(string filename)
         {
-            string medataData = _metaDataGenerator.GetMetaDataFromFile(filename);
+            string medataData = await _metaDataGenerator.GetMetaDataFromFile(filename);
             string[] lines = medataData.Split(System.Environment.NewLine);
             int width=-1, height=-1, frameRate=-1, bitRate = -1;
             string codec = string.Empty;
