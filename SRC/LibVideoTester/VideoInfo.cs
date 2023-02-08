@@ -42,6 +42,11 @@ namespace LibVideoTester
            
 
         }
+
+        public bool TestConfiguration(Configuration c)
+        {
+            return CodecValid(c) && ResolutionValid(c);
+        }
     }
 }
 
