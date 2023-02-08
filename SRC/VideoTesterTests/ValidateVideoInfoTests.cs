@@ -12,9 +12,9 @@ namespace VideoTesterTests
         [Test]
         public void shouldReturnTrueIfCodecIsMatch()
         {
-            string [] validCodecs = new string[] { "hap", "h264","hevc", "hapa"};
-            Configuration c = new Configuration(validCodecs,0,0);
-            VideoInfo v = new VideoInfo("hap",400,400);
+            string [] validCodecs = new string[] { "hap", "h264","hevc", "hapa",};
+            Configuration c = new Configuration(validCodecs,0,0, new int[30], 1024);
+            VideoInfo v = new VideoInfo("hap",400,400,0,0);
             Assert.IsTrue(v.CodecValid(c));
             
         }
@@ -23,8 +23,8 @@ namespace VideoTesterTests
         public void shouldReturnTrueIfHapAndFileSizeDivizibleBy4()
         {
             string[] validCodecs = new string[] { "hap", "h264", "hevc", "hapa" };
-            Configuration c = new Configuration(validCodecs,500,500);
-            VideoInfo v = new VideoInfo("hap", 400,400);
+            Configuration c = new Configuration(validCodecs,500,500, new int[] { 30 }, 1024);
+            VideoInfo v = new VideoInfo("hap", 400,400,0,0);
             Assert.IsTrue(v.ResolutionValid(c));
         }
 
@@ -32,8 +32,8 @@ namespace VideoTesterTests
         public void shouldReturnTrueIfWithinValidResolution()
         {
             string[] validCodecs = new string[] { "hap", "h264", "hevc", "hapa" };
-            Configuration c = new Configuration(validCodecs,500,500);
-            VideoInfo v = new VideoInfo("hap", 400, 400);
+            Configuration c = new Configuration(validCodecs,500,500, new int[] { 30 }, 1024);
+            VideoInfo v = new VideoInfo("hap", 400, 400, 30, 1024);
             Assert.IsTrue(v.ResolutionValid(c));
         }
 
@@ -42,8 +42,8 @@ namespace VideoTesterTests
         public void shouldHaveValidConfig()
         {
             string[] validCodecs = new string[] { "hap", "h264", "hevc", "hapa" };
-            Configuration c = new Configuration(validCodecs, 500, 500);
-            VideoInfo v = new VideoInfo("hap", 400, 400);
+            Configuration c = new Configuration(validCodecs, 500, 500, new int[] { 30 }, 1024);
+            VideoInfo v = new VideoInfo("hap", 400, 400, 30, 1024);
             Assert.IsTrue(v.TestConfiguration(c));
         }
 
@@ -51,11 +51,32 @@ namespace VideoTesterTests
         public void shouldHaveInvalidConfig()
         {
             string[] validCodecs = new string[] { "hap", "h264", "hevc", "hapa" };
-            Configuration c = new Configuration(validCodecs, 200, 200);
-            VideoInfo v = new VideoInfo("hap", 400, 400);
+            Configuration c = new Configuration(validCodecs, 200, 200, new int[] { 30}, 1024);
+            VideoInfo v = new VideoInfo("hap", 400, 400, 30, 1024);
             Assert.IsFalse(v.TestConfiguration(c));
         }
 
+        [Test]
+        public void shouldReturnTrueIfFrameRateIsAMatch()
+        {
+            string[] validCodecs = new string[] { "hap", "h264", "hevc", "hapa" };
+            Configuration c = new Configuration(validCodecs, 200, 200, new int[] { 30,60}, 1024);
+            VideoInfo v = new VideoInfo("hap", 400, 400,30,1024);
+
+            Assert.IsTrue(v.FramerateValid(c));
+
+        }
+
+        [Test]
+        public void shouldReturnTrueIfBelowOrEqualToBitRate()
+        {
+            string[] validCodecs = new string[] { "hap", "h264", "hevc", "hapa" };
+            Configuration c = new Configuration(validCodecs, 200, 200, new int[] { 30, 60 }, 1024);
+            VideoInfo v = new VideoInfo("hap", 400, 400, 30, 1024);
+
+            Assert.IsTrue(v.BitrateValid(c));
+
+        }
 
 
     }

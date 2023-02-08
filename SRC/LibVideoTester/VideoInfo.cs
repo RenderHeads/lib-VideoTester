@@ -7,22 +7,15 @@ namespace LibVideoTester
         private string _codec;
         private int _width;
         private int _height;
-        public VideoInfo(string codec, int width, int height)
+        private int _bitrateKPBS;
+        private int _frameRate;
+        public VideoInfo(string codec, int width, int height, int frameRate, int bitrateKBPS)
         {
             _codec = codec;
             _width = width;
             _height = height;
-        }
-
-
-        public int GetWidth()
-        {
-            return _width;
-        }
-
-        public int GetHeight()
-        {
-            return _height;
+            _frameRate = frameRate;
+            _bitrateKPBS = bitrateKBPS;
         }
 
 
@@ -39,13 +32,22 @@ namespace LibVideoTester
                 return _width % 4 == 0 && _height % 4 == 0 && withinRange;
             }
             return withinRange;
-           
-
+          
         }
 
         public bool TestConfiguration(Configuration c)
         {
-            return CodecValid(c) && ResolutionValid(c);
+            return CodecValid(c) && ResolutionValid(c) && FramerateValid(c) && BitrateValid(c);
+        }
+
+        public bool FramerateValid(Configuration c)
+        {
+            return c.GetFrameRates().Count(x => _frameRate == x) > 0;
+        }
+
+        public bool BitrateValid(Configuration c)
+        {
+            return _bitrateKPBS <= c.GetMaxBitRateKBPS();
         }
     }
 }
