@@ -17,12 +17,19 @@ This project requries *ffprobe* (part of ffmpeg package) installed on your compm
 # Project Structure
 The project is made up out of a console app, a tests project and a library.
 
+# Things it can check
+- Width, Height, Codec, Bit rate, Frame Rate
+
 # Low hanging fruit
 Some things that would be easy to PR in, if someone was up to it
-- Rename the folder for the Console project (it is badly named)
-- Better argument handling
-- Add a CI pipeline to Auto Build
+- Rename the folder for the Console project (it is badly named).
+- Better argument handling.
+- Add a CI pipeline to Auto Build.
 - Add a built in version of ffprobe to prevent need of  pre installed dependecy
+- Get Audio Streams and Channels, and add appropriate configuration.
+
+# Limitations
+- We only check the first stream of the video file.
 
 # Next Steps
 - Add in a way to read JSON files to configure the tool.
