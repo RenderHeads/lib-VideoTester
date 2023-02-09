@@ -19,6 +19,7 @@ The project is made up out of a console app, a tests project and a library.
 
 # Low hanging fruit
 Some things that would be easy to PR in, if someone was up to it
+- Rename the folder for the Console project (it is badly named)
 - Better argument handling
 - Add a CI pipeline to Auto Build
 - Add a built in version of ffprobe to prevent need of  pre installed dependecy
