@@ -20,6 +20,12 @@ The project is made up out of a console app, a tests project and a library.
 # Things it can check
 - Width, Height, Codec, Bit rate, Frame Rate
 
+# Example Usage
+Currently it is just configured to allow h264 files to pass.  In the demo below, the first video passes, the second video fails.
+
+<img width="763" alt="image" src="https://user-images.githubusercontent.com/18391483/217738427-a06835f2-bef4-4f51-934c-f72cf7418373.png">
+
+
 # Low hanging fruit
 Some things that would be easy to PR in, if someone was up to it
 - Rename the folder for the Console project (it is badly named).
@@ -27,12 +33,15 @@ Some things that would be easy to PR in, if someone was up to it
 - Add a CI pipeline to Auto Build.
 - Add a built in version of ffprobe to prevent need of  pre installed dependecy
 - Get Audio Streams and Channels, and add appropriate configuration.
+- Add an option to generate a report and save it next to the checked file.
 
 # Limitations
 - We only check the first stream of the video file.
 
 # Next Steps
 - Add in a way to read JSON files to configure the tool.
+
+
 
 # Usage and Contribution
 ## Usage License
