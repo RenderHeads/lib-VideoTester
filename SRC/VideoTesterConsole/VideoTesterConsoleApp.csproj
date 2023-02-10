@@ -11,9 +11,21 @@
   <ItemGroup>
     <None Remove="Serilog" />
     <None Remove="Serilog.Sinks.Console" />
+    <None Remove="Configurations\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Serilog" Version="2.12.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configurations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Configurations\config1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Configurations\config2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

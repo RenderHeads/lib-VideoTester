@@ -31,7 +31,7 @@ namespace VideoTesterTests
                 return "";
             }
 
-            public string[] GetFullPathToFilesInDirectory(string directoryPath, string extensionFilter)
+            public string[] GetFullPathToFilesInDirectory(string directoryPath)
             {
                 return VideoInfoAsJsonKVP.Keys.ToArray();
             }

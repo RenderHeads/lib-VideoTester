@@ -1,0 +1,7 @@
+﻿{
+  "ValidCodecs": [ "h264" ],
+  "MaxWidth": 512,
+  "MaxHeight": 512,
+  "FrameRates": [ 25, 50 ],
+  "MaxBitRate": 1024
+}

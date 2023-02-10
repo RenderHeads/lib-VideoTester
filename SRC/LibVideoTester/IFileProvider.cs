@@ -5,7 +5,7 @@ namespace LibVideoTester
 {
     public interface IFileProvider
     {
-        public string[] GetFullPathToFilesInDirectory(string directoryPath, string extensionFilter);
+        public string[] GetFullPathToFilesInDirectory(string directoryPath);
 
         public Task<String> GetFileContentsAsync(string pathToFile);
     }

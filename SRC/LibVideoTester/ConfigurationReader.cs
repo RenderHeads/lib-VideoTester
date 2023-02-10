@@ -17,7 +17,7 @@ namespace LibVideoTester
 
         public void ReadConfigurations(string pathToDirectory)
         {
-           _paths =  _fileProvider.GetFullPathToFilesInDirectory(pathToDirectory,"");
+           _paths =  _fileProvider.GetFullPathToFilesInDirectory(pathToDirectory);
         }
 
         public int GetConfigurationCount()

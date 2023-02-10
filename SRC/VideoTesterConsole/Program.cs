@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using LibVideoTester;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
@@ -29,9 +30,23 @@ namespace VideoTester
                     v.GetFramerate(),
                     v.GetCodec());
 
-                //TODO: GetConfig from Json but for now just use something hardcoded:
-                List<Configuration> configurations =  new List<Configuration>();
-                bool foundMatch = ConfigurationMatcher.TryGetMatches(v, out configurations, GenerateStandardConfig());
+                ConfigurationReader configurationReader = new ConfigurationReader(new JsonFileProvider(),
+                    new StandardJsonDeserializer<Configuration>());
+                List<Configuration> configurations = GenerateStandardConfig();
+                configurationReader.ReadConfigurations("Configurations");
+                if (configurationReader.GetConfigurationCount() > 0)
+                {
+                    Dictionary<string, Configuration> configs = configurationReader.GetConfigurations().GetAwaiter().GetResult();
+                    configurations = configs.Values.ToList();
+                    log.Information("Found {num} configurations in Configurations folder", configurations);
+                    foreach (var key in configs.Keys)
+                    {
+                        log.Information("Configuration {key} - {value}", key, configs[key]);
+                    }
+                }
+
+
+                bool foundMatch = ConfigurationMatcher.TryGetMatches(v, out configurations, configurations);
 
                 if (!foundMatch)
                 {

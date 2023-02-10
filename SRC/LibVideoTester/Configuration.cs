@@ -57,8 +57,10 @@ namespace LibVideoTester
 
         }
 
-
-
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(ValidCodecs, MaxWidth, MaxHeight, FrameRates, MaxBitRate);
+        }
     }
 }
 
