@@ -28,6 +28,7 @@ Currently it is just configured to allow h264 files to pass.  In the demo below,
 
 # Low hanging fruit
 Some things that would be easy to PR in, if someone was up to it
+- Read config from jscn
 - ~~Rename the folder for the Console project (it is badly named).~~
 - Better argument handling.
 - Add a CI pipeline to Auto Build.
