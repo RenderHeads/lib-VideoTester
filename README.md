@@ -41,7 +41,13 @@ Some things that would be easy to PR in, if someone was up to it
 - We only check the first stream of the video file.
 
 # Next Steps
-- Add in a way to read JSON files to configure the tool.
+- Clean up formatting, add linting rules
+- Add CI Pipeline to auto build
+- Add in library for better command line argument handling
+- Add check for ffprobe on path and if it can't find it print an error
+- Add flag to save report to file
+- Build little GUI with dotNet MAUI
+  - Make path to ffprobe configurable?
 
 
 
