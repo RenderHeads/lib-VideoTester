@@ -19,12 +19,12 @@ namespace VideoTester
             log.Information("Video Checker (C) RenderHeads 2023");
 
             //NOTE: We assume ffprobe is installed and available on your path ENV.
-            VideoInfoGenerator videoInfoGenerator = new VideoInfoGenerator(new FFProbeMetaDataProvider());
+            VideoMetaDataFactory videoInfoGenerator = new VideoMetaDataFactory(new FFProbeMetaDataProvider());
    
             if (args.Length >= 1)
             {
                 log.Information("Checking Video {path} ", args[0]);
-                VideoInfo v = videoInfoGenerator.GetVideoInfoAsync(args[0]).GetAwaiter().GetResult();
+                VideoMetaData v = videoInfoGenerator.GetVideoInfoAsync(args[0]).GetAwaiter().GetResult();
                 log.Information("Meta data retrieved from file width:{width}, height:{height}, bitrate:{bitrate}, fps: {fps}, codec: {codec}",
                     v.GetWidth(),
                     v.GetHeight(),

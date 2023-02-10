@@ -24,8 +24,8 @@ namespace VideoTesterTests
         [Test]
         public void shouldReturnValidVideoInfo()
         {
-            VideoInfoGenerator generator = new VideoInfoGenerator(new DummyMetaDataGenerator());
-            VideoInfo v = generator.GetVideoInfoAsync("c:/foo").GetAwaiter().GetResult(); // the file path doesn't matter
+            VideoMetaDataFactory generator = new VideoMetaDataFactory(new DummyMetaDataGenerator());
+            VideoMetaData v = generator.GetVideoInfoAsync("c:/foo").GetAwaiter().GetResult(); // the file path doesn't matter
             Assert.IsNotNull(v);
             Configuration c = new Configuration(new string[] { "h264" }, 3840, 2160, new int[] { 25 }, 23205);
             Assert.IsTrue(v.BitrateValid(c));

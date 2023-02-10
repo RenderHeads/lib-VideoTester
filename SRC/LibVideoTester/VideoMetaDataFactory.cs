@@ -5,24 +5,26 @@ using LibVideoTester.Providers;
 
 namespace LibVideoTester
 {
- 
-    public class VideoInfoGenerator
+
+    public class VideoMetaDataFactory
     {
         private IVideoMetaDataProvider _metaDataGenerator;
-        public VideoInfoGenerator(IVideoMetaDataProvider metaDataGenreator)
+        public VideoMetaDataFactory(IVideoMetaDataProvider metaDataGenerator)
         {
-            _metaDataGenerator = metaDataGenreator;
+            _metaDataGenerator = metaDataGenerator;
         }
 
-        public async Task<VideoInfo> GetVideoInfoAsync(string filename)
+
+        public async Task<VideoMetaData> GetVideoInfoAsync(string filename)
         {
+
             string medataData = await _metaDataGenerator.GetMetaDataFromFile(filename);
             string[] lines = medataData.Split(System.Environment.NewLine);
-            int width=-1, height=-1, frameRate=-1, bitRate = -1;
+            int width = -1, height = -1, frameRate = -1, bitRate = -1;
             string codec = string.Empty;
             foreach (string line in lines)
             {
-                string[]parts = line.Split('=');
+                string[] parts = line.Split('=');
                 if (parts.Length == 2)
                 {
                     if (parts[0].ToLower().Contains("codec_name"))
@@ -45,11 +47,11 @@ namespace LibVideoTester
                     if (parts[0].ToLower().Contains("r_frame_rate"))
                     {
                         string[] fpsSplit = parts[1].Split('/');
-                        int.TryParse(fpsSplit[0], out frameRate );
+                        int.TryParse(fpsSplit[0], out frameRate);
                     }
                 }
             }
-            return new VideoInfo(codec,width,height,frameRate,bitRate);
+            return new VideoMetaData(codec, width, height, frameRate, bitRate);
         }
     }
 }

@@ -2,14 +2,14 @@
 using System.Linq;
 namespace LibVideoTester
 {
-    public class VideoInfo
+    public class VideoMetaData
     {
         private string _codec;
         private int _width;
         private int _height;
         private int _bitrateKPBS;
         private int _frameRate;   
-        public VideoInfo(string codec, int width, int height, int frameRate, int bitrateKBPS)
+        public VideoMetaData(string codec, int width, int height, int frameRate, int bitrateKBPS)
         {
             _codec = codec;
             _width = width;

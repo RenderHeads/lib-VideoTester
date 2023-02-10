@@ -15,7 +15,7 @@ namespace VideoTesterTests
         [Test]
         public void shouldReturnTrueIfCodecIsMatch()
         {
-            VideoInfo v = new VideoInfo("hap",400,400,0,0);
+            VideoMetaData v = new VideoMetaData("hap",400,400,0,0);
             Assert.IsTrue(v.CodecValid(c));            
         }
 
@@ -23,42 +23,42 @@ namespace VideoTesterTests
         [Test]
         public void shouldReturnTrueIfWithinValidResolution()
         {
-            VideoInfo v = new VideoInfo("hap", 400, 400, 30, 1024);
+            VideoMetaData v = new VideoMetaData("hap", 400, 400, 30, 1024);
             Assert.IsTrue(v.ResolutionValid(c));
         }
 
         [Test]
         public void shouldReturnFalseIfHapNotDivisbleBy4()
         {
-            VideoInfo v = new VideoInfo("hap", 123, 400, 30, 1024);
+            VideoMetaData v = new VideoMetaData("hap", 123, 400, 30, 1024);
             Assert.IsFalse(v.ResolutionValid(c));
         }
 
         [Test]
         public void shouldHaveValidConfig()
         {
-            VideoInfo v = new VideoInfo("hap", 400, 400, 30, 1024);
+            VideoMetaData v = new VideoMetaData("hap", 400, 400, 30, 1024);
             Assert.IsTrue(v.TestConfiguration(c));
         }
 
         [Test]
         public void shouldHaveInvalidConfig()
         {
-            VideoInfo v = new VideoInfo("hap", 900, 900, 30, 1024);
+            VideoMetaData v = new VideoMetaData("hap", 900, 900, 30, 1024);
             Assert.IsFalse(v.TestConfiguration(c));
         }
 
         [Test]
         public void shouldReturnTrueIfFrameRateIsAMatch()
         {
-            VideoInfo v = new VideoInfo("hap", 400, 400,30,1024);
+            VideoMetaData v = new VideoMetaData("hap", 400, 400,30,1024);
             Assert.IsTrue(v.FramerateValid(c));
         }
 
         [Test]
         public void shouldReturnTrueIfBelowOrEqualToBitRate()
         {
-            VideoInfo v = new VideoInfo("hap", 400, 400, 30, 1024);
+            VideoMetaData v = new VideoMetaData("hap", 400, 400, 30, 1024);
             Assert.IsTrue(v.BitrateValid(c));
 
         }

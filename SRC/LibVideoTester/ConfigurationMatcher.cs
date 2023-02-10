@@ -5,7 +5,7 @@ namespace LibVideoTester
 {
     public static class ConfigurationMatcher
     {
-        public static bool TryGetMatches(VideoInfo v, out List<Configuration> matches, List<Configuration> configurations)
+        public static bool TryGetMatches(VideoMetaData v, out List<Configuration> matches, List<Configuration> configurations)
         {
             matches =  new List<Configuration>();
             foreach (Configuration c in configurations)
