@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1703.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoTesterConsoleApp", "VideoTester\VideoTesterConsoleApp.csproj", "{770FD90B-1047-47F3-BB2E-2A0144DBEC2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoTesterConsoleApp", "VideoTesterConsole\VideoTesterConsoleApp.csproj", "{770FD90B-1047-47F3-BB2E-2A0144DBEC2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibVideoTester", "LibVideoTester\LibVideoTester.csproj", "{25741281-BAB3-41E5-BC06-2A87819DDB92}"
 EndProject
