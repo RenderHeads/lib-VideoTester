@@ -1,47 +1,64 @@
 ﻿using System;
 namespace LibVideoTester
 {
-    public class Configuration
+    public struct Configuration
     {
-        private string[] _validCodecs;
-        private int _maxWidth, _maxHeight;
-        public int[] _frameRates;
-        public int _maxBitRateKBPS;
-        public Configuration(string[] validCodecs, int maxWidth, int maxHeight, int[] frameRates, int maxBirateKBPS)
+        public readonly string[] ValidCodecs;
+        public readonly int MaxWidth;
+        public readonly int MaxHeight;
+        public readonly int[] FrameRates;
+        public readonly int MaxBitRate;
+
+        //NOTE: If you add an attribute, be sure to include it in custom Equals
+        public Configuration(string[] validCodecs, int maxWidth, int maxHeight, int[] frameRates, int maxBitrate)
         {
-            _validCodecs = validCodecs;
-            _maxWidth = maxWidth;
-            _maxHeight = maxHeight;
-            _frameRates = frameRates;
-            _maxBitRateKBPS = maxBirateKBPS; 
+            ValidCodecs = validCodecs;
+            MaxWidth = maxWidth;
+            MaxHeight = maxHeight;
+            FrameRates = frameRates;
+            MaxBitRate = maxBitrate; 
         }
 
-        public int GetMaxWidth()
+
+        public override string ToString()
         {
-            return _maxWidth;
+            return $"Configuration: ValidCodecs: {string.Join(',',ValidCodecs)} FrameRates: {string.Join(',', FrameRates)} MaxWidth:{MaxWidth} MaxHeight: {MaxHeight} Bitrate: {MaxBitRate}";
         }
 
-        public int GetMaxHeight()
+        //NOTE: If you add an attribute, be sure to include it in custom Equals
+        public override bool Equals(object obj)
         {
-            return _maxHeight;
+            if (obj is Configuration)
+            {
+
+                Configuration compareTo = (Configuration)obj;
+                bool frameRatesEqual = FrameRates.Length == compareTo.FrameRates.Length;
+                if (!frameRatesEqual)
+                {
+                    return false;
+                }
+                for (int i = 0; i < FrameRates.Length; i++)
+                {
+                    if (FrameRates[i] != compareTo.FrameRates[i])
+                    {
+                        return false;
+                    }
+                }
+
+                return MaxWidth == compareTo.MaxWidth &&
+                    MaxHeight == compareTo.MaxHeight &&
+                    MaxBitRate == compareTo.MaxBitRate &&
+                    String.Join(' ', ValidCodecs) == String.Join(' ', compareTo.ValidCodecs);
+
+            }
+            return false;
+
+
+
         }
 
-        public string[] GetCodecs()
-        {
-            return _validCodecs;
-        }
 
-        public int[] GetFrameRates()
-        {
-            return _frameRates;
-        }
 
-        public int GetMaxBitRateKBPS()
-        {
-            return _maxBitRateKBPS;
-        }
-
-        
     }
 }
 

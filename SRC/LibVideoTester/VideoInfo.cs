@@ -29,12 +29,12 @@ namespace LibVideoTester
 
         public bool CodecValid(Configuration c)
         {
-            return c.GetCodecs().Count(x => x == _codec) > 0;
+            return c.ValidCodecs.Count(x => x == _codec) > 0;
         }
 
         public bool ResolutionValid(Configuration c)
         {
-            bool withinRange = _width <= c.GetMaxWidth() && _height <= c.GetMaxHeight();
+            bool withinRange = _width <= c.MaxWidth && _height <= c.MaxHeight;
             if (IsHap())
             {
                 return _width % 4 == 0 && _height % 4 == 0 && withinRange;
@@ -50,12 +50,12 @@ namespace LibVideoTester
 
         public bool FramerateValid(Configuration c)
         {
-            return c.GetFrameRates().Count(x => _frameRate == x) > 0;
+            return c.FrameRates.Count(x => _frameRate == x) > 0;
         }
 
         public bool BitrateValid(Configuration c)
         {
-            return _bitrateKPBS <= c.GetMaxBitRateKBPS();
+            return _bitrateKPBS <= c.MaxBitRate;
         }
 
         public int GetWidth()

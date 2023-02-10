@@ -10,13 +10,10 @@ namespace LibVideoTester
             matches =  new List<Configuration>();
             foreach (Configuration c in configurations)
             {
-                if (c != null)
-                {
                     if (v.TestConfiguration(c))
                     {
                         matches.Add(c);
                     }
-                }
             }
             return matches.Count > 0;
         }
