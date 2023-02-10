@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace LibVideoTester
+namespace LibVideoTester.Providers
 {
     public interface IFileProvider
     {

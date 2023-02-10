@@ -1,8 +1,8 @@
 ﻿using System;
 using Newtonsoft.Json;
-namespace LibVideoTester
+namespace LibVideoTester.Serialization
 {
-    public class StandardJsonDeserializer<T> : IDeserializer<T>
+    public class NewtonSoftJsonDeserializer<T> : IDeserializer<T>
     {
         public T Deserialize(string contents)
         {

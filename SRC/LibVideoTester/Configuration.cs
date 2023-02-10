@@ -52,9 +52,6 @@ namespace LibVideoTester
 
             }
             return false;
-
-
-
         }
 
         public override int GetHashCode()

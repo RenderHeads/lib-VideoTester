@@ -3,6 +3,8 @@ using LibVideoTester;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using LibVideoTester.Providers;
+using LibVideoTester.Serialization;
 
 namespace VideoTesterTests
 {
@@ -50,7 +52,7 @@ namespace VideoTesterTests
         public void Setup()
         {
             _fileProvider = new MockFileProvider(DummyData);
-            _deserializer = new StandardJsonDeserializer<Configuration>();
+            _deserializer = new NewtonSoftJsonDeserializer<Configuration>();
         }
 
         [Test]

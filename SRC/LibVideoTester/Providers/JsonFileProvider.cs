@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace LibVideoTester
+namespace LibVideoTester.Providers
 {
     //This file is not unit tested as it interfaces with the edge of the application and the system
     public class JsonFileProvider : IFileProvider

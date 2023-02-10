@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using LibVideoTester;
+using LibVideoTester.Providers;
+using LibVideoTester.Serialization;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
 
@@ -17,7 +19,7 @@ namespace VideoTester
             log.Information("Video Checker (C) RenderHeads 2023");
 
             //NOTE: We assume ffprobe is installed and available on your path ENV.
-            VideoInfoGenerator videoInfoGenerator = new VideoInfoGenerator(new FFProbeMetaDataGenerator());
+            VideoInfoGenerator videoInfoGenerator = new VideoInfoGenerator(new FFProbeMetaDataProvider());
    
             if (args.Length >= 1)
             {
@@ -31,7 +33,7 @@ namespace VideoTester
                     v.GetCodec());
 
                 ConfigurationReader configurationReader = new ConfigurationReader(new JsonFileProvider(),
-                    new StandardJsonDeserializer<Configuration>());
+                    new NewtonSoftJsonDeserializer<Configuration>());
                 List<Configuration> configurations = GenerateStandardConfig();
                 configurationReader.ReadConfigurations("Configurations");
                 if (configurationReader.GetConfigurationCount() > 0)

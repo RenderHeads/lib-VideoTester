@@ -1,5 +1,5 @@
 ﻿using System;
-namespace LibVideoTester
+namespace LibVideoTester.Serialization
 {
     public interface IDeserializer<T>
     {

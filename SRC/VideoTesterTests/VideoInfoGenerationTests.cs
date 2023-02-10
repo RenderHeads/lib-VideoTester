@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using LibVideoTester;
 using NUnit.Framework;
-
+using LibVideoTester.Providers;
 namespace VideoTesterTests
 {
-    public class DummyMetaDataGenerator : IMetaDataGenerator
+    public class DummyMetaDataGenerator : IVideoMetaDataProvider
     {
         public async Task<string> GetMetaDataFromFile(string filename)
         {

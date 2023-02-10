@@ -8,10 +8,7 @@ namespace LibVideoTester
         private int _width;
         private int _height;
         private int _bitrateKPBS;
-        private int _frameRate;
-
-    
-        
+        private int _frameRate;   
         public VideoInfo(string codec, int width, int height, int frameRate, int bitrateKBPS)
         {
             _codec = codec;
