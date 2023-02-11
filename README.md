@@ -22,7 +22,7 @@ Ubuntu(CLI): sudo apt install ffmpeg
 The project is made up out of a console app, a tests project and a library.
 
 # Things it can check
-- Width, Height, Codec, Bit rate, Frame Rate
+- Width, Height, Codec, Bit Rate, Frame Rate
 
 # Example Usage
 Currently it is just configured to allow h264 files to pass.  In the demo below, the first video passes, the second video fails.
