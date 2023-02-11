@@ -7,6 +7,7 @@ using LibVideoTester.Helpers;
 using LibVideoTester.Models;
 using LibVideoTester.Providers;
 using LibVideoTester.Serialization;
+using LibVideoTester.Api;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
 
@@ -15,15 +16,14 @@ namespace VideoTester
     class Program
     {
         static void Main(string[] args)
-        {            
+        {
             using var log = new LoggerConfiguration().WriteTo.Console(theme: AnsiConsoleTheme.Code).CreateLogger();
             log.Information("Video Checker (C) RenderHeads 2023");
-            //NOTE: We assume ffprobe is installed and available on your path ENV.
-            VideoMetaDataFactory videoInfoGenerator = new VideoMetaDataFactory(new FFProbeMetaDataProvider(), new FFprobeMetaToVideoInfo());
+            //NOTE: We assume ffprobe is installed and available on your path ENV.        
             if (args.Length >= 1)
-            {  
+            {
                 log.Information("Checking Video {path} ", args[0]);
-                VideoMetaData v = videoInfoGenerator.GetVideoInfoAsync(args[0]).GetAwaiter().GetResult();
+                VideoMetaData v = VideoTesterApi.GetVideoInfo(args[0]).GetAwaiter().GetResult();
                 log.Information("Meta data retrieved from file width:{width}, height:{height}, bitrate:{bitrate}, fps: {fps}, codec: {codec}",
                     v.Width,
                     v.Height,
@@ -54,7 +54,7 @@ namespace VideoTester
                 {
                     log.Information("Video matches atleast {count} configurations", configurations.Count);
                 }
-                
+
             }
             else
             {
@@ -66,7 +66,7 @@ namespace VideoTester
 
         static List<Configuration> GenerateStandardConfig()
         {
-            return new List<Configuration> { new Configuration(new string[] { "h264"}, 2048,2048,new int[] { 30,60}, 30000)};
+            return new List<Configuration> { new Configuration(new string[] { "h264" }, 2048, 2048, new int[] { 30, 60 }, 30000) };
         }
     }
 }

@@ -8,7 +8,7 @@ namespace LibVideoTester.Models
         public int Width { get; private set; }
         public int Height { get; private set; }
         public int BitrateKPBS { get; private set; }
-        public int FrameRate { get; private set; } 
+        public int FrameRate { get; private set; }
         public VideoMetaData(string codec, int width, int height, int frameRate, int bitrateKBPS)
         {
             Codec = codec;
@@ -37,7 +37,7 @@ namespace LibVideoTester.Models
                 return Width % 4 == 0 && Height % 4 == 0 && withinRange;
             }
             return withinRange;
-          
+
         }
 
         public bool TestConfiguration(Configuration c)
@@ -55,7 +55,7 @@ namespace LibVideoTester.Models
             return BitrateKPBS <= c.MaxBitRate;
         }
 
-     
+
     }
 }
 
