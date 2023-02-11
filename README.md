@@ -88,7 +88,7 @@ Some things that would be easy to PR in, if someone was up to it
 - ~~Read config from json~~ (it will try parse all JSON files in the Configurations directory).
 - ~~Rename the folder for the Console project (it is badly named).~~
 - ~~Better argument handling.~~  (Using System.Commandline dotNet preview package by microsoft)
-- Add Name  field in configuration.
+- ~~Add Name  field in configuration.~~
 
 # Version 1 MVP Requirements (can do in any order):
 - Add linting rules and clean up formatting
