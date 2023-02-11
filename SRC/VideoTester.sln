@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibVideoTester", "LibVideoT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoTesterTests", "VideoTesterTests\VideoTesterTests.csproj", "{C010C1C1-60FF-4917-BCAA-F1E0E8F563B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoTesterApp", "VideoTesterApp\VideoTesterApp.csproj", "{922B193E-47C3-4BC8-A91C-EE372A4D9082}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C010C1C1-60FF-4917-BCAA-F1E0E8F563B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C010C1C1-60FF-4917-BCAA-F1E0E8F563B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C010C1C1-60FF-4917-BCAA-F1E0E8F563B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{922B193E-47C3-4BC8-A91C-EE372A4D9082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{922B193E-47C3-4BC8-A91C-EE372A4D9082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{922B193E-47C3-4BC8-A91C-EE372A4D9082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{922B193E-47C3-4BC8-A91C-EE372A4D9082}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

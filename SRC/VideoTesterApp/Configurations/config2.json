@@ -1,0 +1,8 @@
+﻿{
+  "Name": "SampleConfig2",
+  "ValidCodecs": [ "h264" ],
+  "MaxWidth": 4096,
+  "MaxHeight": 2048,
+  "FrameRates": [ 25, 50, 60 ],
+  "MaxBitRate": 99999
+}
