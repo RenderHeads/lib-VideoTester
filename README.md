@@ -36,15 +36,15 @@ Some things that would be easy to PR in, if someone was up to it
 - ~~Start documenting library API before it gets out of hand~~
 - ~~Read config from json~~ (it will try parse all JSON files in the Configurations directory).
 - ~~Rename the folder for the Console project (it is badly named).~~
-- ~~Better argument handling.~~  Using System.Commandline dotNet preview package by microsoft
+- ~~Better argument handling.~~  (Using System.Commandline dotNet preview package by microsoft)
 - Add a CI pipeline to Auto Build.
 - Add a built in version of ffprobe to prevent need of  pre installed dependecy
-- Get Audio Streams and Channels, and add appropriate configuration.
+
 - Add an option to generate a report and save it next to the checked file.
 
 # Limitations
 - We only check the first stream of the video file.
-
+- We don't get audio data and check that
 # Next Steps
 - Clean up formatting, add linting rules
 - Add CI Pipeline to auto build
