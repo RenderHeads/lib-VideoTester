@@ -74,7 +74,8 @@ The below screenshot shows an example of the commandline application indicating 
 <img width="1115" alt="image" src="https://user-images.githubusercontent.com/18391483/218257157-f35af1f6-3bf5-4b83-bb05-1ab504bc04a6.png">
 
 # Known Issues:
-HAP Codec files width and height, need to be divisble by 4, however the logic to check if we have HAP codec specified, is currently flawed as it doesn't account for all the different flavours of HAP.
+~~HAP Codec files width and height, need to be divisble by 4, however the logic to check if we have HAP codec specified, is currently flawed as it doesn't account for all the different flavours of HAP~~.
+Configuration will not pass if video is set to hap and not divisible by 4. While this is the correct behaviour, it does not show thing to the user and will seem like a bug.
 
 
 # Low hanging fruit
