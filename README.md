@@ -56,6 +56,9 @@ This project requries *ffprobe* (part of ffmpeg package) installed on your compm
 - Windows: Download here: https://ffmpeg.org/download.html - install and add to path manually.
 - Ubuntu(CLI): ```sudo apt install ffmpeg```
 
+# Build Requirements
+- dotNet 6
+- dotNet MAUI (to build the cross platform GUI)
 # Project Structure
 The project is made up out of a console app, a tests project and a library.
 
