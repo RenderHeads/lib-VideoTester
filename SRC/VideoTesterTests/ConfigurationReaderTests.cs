@@ -16,13 +16,16 @@ namespace VideoTesterTests
         //A way to generate some mock data for our application so that we get valid json for the application to test against
         public class MockFileProvider : IFileProvider
         {
-            private Dictionary<string, string> VideoInfoAsJsonKVP = new Dictionary<string, string>();
-
-            public MockFileProvider(Dictionary<string, Configuration> mockFiles)
+            private Dictionary<string, string> VideoInfoAsJsonKVP = new Dictionary<string, string>();            
+            public MockFileProvider(Dictionary<string, Configuration> mockFiles, bool addGarbage=false)
             {
                 foreach (var key in mockFiles.Keys)
                 {
                     VideoInfoAsJsonKVP[key] = Newtonsoft.Json.JsonConvert.SerializeObject(mockFiles[key]);
+                }
+                if (addGarbage)
+                {
+                    VideoInfoAsJsonKVP["__gargbageFile"] = "GRasdaslkjdas;lkjlasdfdsfwe4234234";
                 }
             }
 
@@ -83,6 +86,23 @@ namespace VideoTesterTests
                 Assert.AreEqual(DummyData[key], configuration[key]);
             }
 
+        }
+
+        [Test]
+        public void shouldGracefullyHandleMalformedJson()
+        {
+            ConfigurationFactory reader = new ConfigurationFactory(new MockFileProvider(DummyData,addGarbage:true), _deserializer);
+            Dictionary<string, Configuration> configuration = reader.GetConfigurations().GetAwaiter().GetResult();
+            Assert.AreEqual(0, configuration.Keys.Count());
+            reader.ReadConfigurations("/");
+            configuration = reader.GetConfigurations().GetAwaiter().GetResult();
+            Assert.AreEqual(2, configuration.Keys.Count());
+
+            foreach (var key in configuration.Keys)
+            {
+
+                Assert.AreEqual(DummyData[key], configuration[key]);
+            }
         }
 
 

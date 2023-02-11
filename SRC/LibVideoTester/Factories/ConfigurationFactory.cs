@@ -34,8 +34,11 @@ namespace LibVideoTester.Factories
             foreach (string path in _paths)
             {
                 string result = await _fileProvider.GetFileContentsAsync(path);
-                Configuration config = _deserializer.Deserialize(result);
-                c.Add(path, config);
+                Configuration config;
+                if (_deserializer.TryDeserialize(result, out config))
+                {
+                    c.Add(path, config);
+                }
             }
             return c;
         }

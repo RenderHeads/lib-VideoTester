@@ -3,7 +3,7 @@ namespace LibVideoTester.Serialization
 {
     public interface IDeserializer<T>
     {
-        public T Deserialize(string contents);
+        public bool  TryDeserialize(string contents, out T objOut);
     }
 }
 

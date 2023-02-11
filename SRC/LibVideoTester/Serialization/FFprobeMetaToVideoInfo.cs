@@ -4,11 +4,12 @@ namespace LibVideoTester.Serialization
 {
     public class FFprobeMetaToVideoInfo : IDeserializer<VideoMetaData>
     {
-        public VideoMetaData Deserialize(string contents)
+        public bool TryDeserialize(string contents, out VideoMetaData metaData)
         {
             string[] lines = contents.Split(System.Environment.NewLine);
             int width = -1, height = -1, frameRate = -1, bitRate = -1;
             string codec = string.Empty;
+
             foreach (string line in lines)
             {
                 string[] parts = line.Split('=');
@@ -38,7 +39,8 @@ namespace LibVideoTester.Serialization
                     }
                 }
             }
-            return new VideoMetaData(codec, width, height, frameRate, bitRate);
+            metaData =  new VideoMetaData(codec, width, height, frameRate, bitRate);
+            return true;
         }
     }
 }
