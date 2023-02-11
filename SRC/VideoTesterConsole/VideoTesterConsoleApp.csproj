@@ -12,10 +12,14 @@
     <None Remove="Serilog" />
     <None Remove="Serilog.Sinks.Console" />
     <None Remove="Configurations\" />
+    <None Remove="System.CommandLine.Parser" />
+    <None Remove="System.CommandLine" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Serilog" Version="2.12.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="System.CommandLine.Parser" Version="0.1.1" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configurations\" />

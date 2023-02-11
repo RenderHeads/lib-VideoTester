@@ -35,10 +35,9 @@ Some things that would be easy to PR in, if someone was up to it
 - ~~Neaten up files locations and interfaces~~
 - ~~Separate out logic for parsing FFMPEG meta data~~
 - ~~Start documenting library API before it gets out of hand~~
-- Setup linting rules.
 - ~~Read config from json~~ (it will try parse all JSON files in the Configurations directory).
 - ~~Rename the folder for the Console project (it is badly named).~~
-- Better argument handling.
+- ~~Better argument handling.~~  Using System.Commandline dotNet preview package by microsoft
 - Add a CI pipeline to Auto Build.
 - Add a built in version of ffprobe to prevent need of  pre installed dependecy
 - Get Audio Streams and Channels, and add appropriate configuration.
