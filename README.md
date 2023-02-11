@@ -9,7 +9,7 @@
 
 
 # Video Sanity Testing Tool
-This project is being built to allow our internal and external team members to  quickly check if a video file matches a specific configuration that we need, to ensure the video will work in the game / application it has been made for. The intention is to catch problems with files early on in the process and prevent slow downs later on in the development process.
+This project is intended to allow our internal and external team members to quickly check if a video file matches a specific configuration that we need, to ensure the video will work in the game / application it has been made for. The intention is to catch problems with files early on in the process and prevent slow downs later on in the development process.
 
 ## Principle Design:
 FFProbe can provided us with meta data in a format that is pretty easy to parse. Given the complicated nature of the syntax, this acts as a wrapper tool that  generally simplifies things for the non power-user.
@@ -29,10 +29,11 @@ duration=13.800000
 bit_rate=23204268
 ```
 
-This is pretty easy to then parse and compare against some known configuration.  This project provides an API to get these details, as well as compare them against configurations. It also commands a CLI tool that implements the API
+This is pretty easy to then parse and compare against some known configuration. This project provides an API to get these details, as well as compare them against configurations. It also has a CLI tool that implements the API.
 
-Configurations are sepcific in json in a ```Configurations``` folder as in the below example:
-Setup configurations in the configurations folder as per your requirements.  These files need to be valid JSON
+Configurations are sepcified in json format in a ```Configurations``` folder.
+
+Below is an example configraution file - These files need to be valid JSON
 ```
 {
   "ValidCodecs": [ "hap", "h264" ],
@@ -50,29 +51,30 @@ Setup configurations in the configurations folder as per your requirements.  The
 
 
 # Dependencies
-This project requries *ffprobe* (part of ffmpeg package) installed on your compmuter and available in PATH. We  will probably  want to build this in at some point.
+This project requries *ffprobe* (part of ffmpeg package) installed on your compmuter and available in PATH. We may make a version that distributes this together with the build.
 ## Installing FFProbe
 - Mac (CLI): ```brew install ffmpeg```
 - Windows: Download here: https://ffmpeg.org/download.html - install and add to path manually.
 - Ubuntu(CLI): ```sudo apt install ffmpeg```
 
 # Build Requirements
-- dotNet 6
-- dotNet MAUI (to build the cross platform GUI)
-# Project Structure
-The project is made up out of a console app, a tests project and a library.
+- dotNet 6.
+- dotNet MAUI (to build the cross platform GUI).
+- We use the Visual Studio IDE, but any will do.
 
-# Things it can check
-- Width, Height, Codec, Bit Rate, Frame Rate
 
-# Example Usage
-Currently it is just configured to allow h264 files to pass.  In the demo below, the first video passes, the second video fails.
+# Example  Commandline Usage 
+
+```
+./VideoTesterConsoleApp -i YOUR_FILE_HERE.EXTENSION
+```
+
+The below screenshot shows an example of the commandline application indicating that the video file does not match an acceptable configuration.
 
 <img width="1115" alt="image" src="https://user-images.githubusercontent.com/18391483/218257157-f35af1f6-3bf5-4b83-bb05-1ab504bc04a6.png">
 
 # Known Issues:
 HAP Codec files width and height, need to be divisble by 4, however the logic to check if we have HAP codec specified, is currently flawed as it doesn't account for all the different flavours of HAP.
-
 
 
 # Low hanging fruit
@@ -93,15 +95,12 @@ Some things that would be easy to PR in, if someone was up to it
 - Add sentry logging to console app for error logging (Be sure to setup sensible Contexts)
 - Add check for ffprobe on path and if it can't find it print an error
 - Build little GUI with dotNet MAUI
+- Make sure we can handle the "divisble by 4" check for HAP videos.
 
 # Limitations
 - We only check the first stream of the video file.
 - We don't get audio data and check that
 
-# Command line Usage
-```
-./VideoTesterConsoleApp -i YOUR_FILE_HERE.EXTENSION
-```
 
 
 # Api
