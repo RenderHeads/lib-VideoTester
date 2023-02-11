@@ -76,7 +76,7 @@ e.g.
 - Max Bitrate:  The highest acceptable bitrack in KBPS.
 
 
-## basic Usage
+## Basic Usage
 ```
 ./VideoTesterConsoleApp -i YOUR_FILE_HERE.EXTENSION
 ```
