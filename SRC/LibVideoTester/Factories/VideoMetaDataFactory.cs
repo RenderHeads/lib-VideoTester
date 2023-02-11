@@ -21,7 +21,7 @@ namespace LibVideoTester.Factories
         public async Task<VideoMetaData> GetVideoInfoAsync(string filename)
         {
             string medataData = await _metaDataGenerator.GetMetaDataFromFile(filename);
-            return _deserializer.Deserialize(medataData);                
+            return _deserializer.Deserialize(medataData);
         }
     }
 }

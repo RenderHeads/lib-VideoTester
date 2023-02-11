@@ -16,13 +16,13 @@ namespace LibVideoTester.Models
             MaxWidth = maxWidth;
             MaxHeight = maxHeight;
             FrameRates = frameRates;
-            MaxBitRate = maxBitrate; 
+            MaxBitRate = maxBitrate;
         }
 
 
         public override string ToString()
         {
-            return $"Configuration: ValidCodecs: {string.Join(',',ValidCodecs)} FrameRates: {string.Join(',', FrameRates)} MaxWidth:{MaxWidth} MaxHeight: {MaxHeight} Bitrate: {MaxBitRate}";
+            return $"Configuration: ValidCodecs: {string.Join(',', ValidCodecs)} FrameRates: {string.Join(',', FrameRates)} MaxWidth:{MaxWidth} MaxHeight: {MaxHeight} Bitrate: {MaxBitRate}";
         }
 
         //NOTE: If you add an attribute, be sure to include it in custom Equals

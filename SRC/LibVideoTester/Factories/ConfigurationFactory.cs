@@ -20,7 +20,7 @@ namespace LibVideoTester.Factories
 
         public void ReadConfigurations(string pathToDirectory)
         {
-           _paths =  _fileProvider.GetFullPathToFilesInDirectory(pathToDirectory);
+            _paths = _fileProvider.GetFullPathToFilesInDirectory(pathToDirectory);
         }
 
         public int GetConfigurationCount()
@@ -28,17 +28,17 @@ namespace LibVideoTester.Factories
             return _paths.Length;
         }
 
-        public async Task<Dictionary<string,Configuration>> GetConfigurations()
+        public async Task<Dictionary<string, Configuration>> GetConfigurations()
         {
-            Dictionary<string, Configuration> c = new Dictionary<string, Configuration>();  
+            Dictionary<string, Configuration> c = new Dictionary<string, Configuration>();
             foreach (string path in _paths)
             {
                 string result = await _fileProvider.GetFileContentsAsync(path);
-                Configuration config =_deserializer.Deserialize(result);
+                Configuration config = _deserializer.Deserialize(result);
                 c.Add(path, config);
             }
             return c;
-        } 
+        }
     }
 }
 

@@ -11,14 +11,14 @@ namespace VideoTesterTests
         public void Setup()
         {
             string[] validCodecs = new string[] { "hap", "h264", "hevc", "hapa", };
-            c = new Configuration(validCodecs, 500, 500, new int[] { 30,60}, 1024);
+            c = new Configuration(validCodecs, 500, 500, new int[] { 30, 60 }, 1024);
         }
 
         [Test]
         public void shouldReturnTrueIfCodecIsMatch()
         {
-            VideoMetaData v = new VideoMetaData("hap",400,400,0,0);
-            Assert.IsTrue(v.CodecValid(c));            
+            VideoMetaData v = new VideoMetaData("hap", 400, 400, 0, 0);
+            Assert.IsTrue(v.CodecValid(c));
         }
 
 
@@ -53,7 +53,7 @@ namespace VideoTesterTests
         [Test]
         public void shouldReturnTrueIfFrameRateIsAMatch()
         {
-            VideoMetaData v = new VideoMetaData("hap", 400, 400,30,1024);
+            VideoMetaData v = new VideoMetaData("hap", 400, 400, 30, 1024);
             Assert.IsTrue(v.FramerateValid(c));
         }
 
