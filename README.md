@@ -11,6 +11,44 @@
 # Video Sanity Testing Tool
 This project is being built to allow our internal and external team members to  quickly check if a video file matches a specific configuration that we need, to ensure the video will work in the game / application it has been made for. The intention is to catch problems with files early on in the process and prevent slow downs later on in the development process.
 
+## Principle Design:
+FFProbe can provided us with meta data in a format that is pretty easy to parse. Given the complicated nature of the syntax, this acts as a wrapper tool that  generally simplifies things for the non power-user.
+
+For example the following command:
+```
+ffprobe -v error -select_streams v:0 -show_entries stream=width,height,duration,bit_rate,r_frame_rate,codec_name -of default=noprint_wrappers=1 myvideo.mov
+```
+
+will return an output as follows:
+```
+codec_name=h264
+width=3840
+height=2160
+r_frame_rate=25/1
+duration=13.800000
+bit_rate=23204268
+```
+
+This is pretty easy to then parse and compare against some known configuration.  This project provides an API to get these details, as well as compare them against configurations. It also commands a CLI tool that implements the API
+
+Configurations are sepcific in json in a ```Configurations``` folder as in the below example:
+Setup configurations in the configurations folder as per your requirements.  These files need to be valid JSON
+```
+{
+  "ValidCodecs": [ "hap", "h264" ],
+  "MaxWidth": 2048,
+  "MaxHeight": 1024,
+  "FrameRates": [ 30, 60 ],
+  "MaxBitRate": 1024
+}
+```
+- ValidCodec: an array of codec names that are valid
+- MaxWidth: the largest the video width can be.
+- MaxHeight: the largest the video height can be.
+- FrameRates: An array of integer values for acceptable framerates.
+- Max Bitrate:  The highest acceptable bitrack in KBPS.
+
+
 # Dependencies
 This project requries *ffprobe* (part of ffmpeg package) installed on your compmuter and available in PATH. We  will probably  want to build this in at some point.
 ## Installing FFProbe
@@ -56,27 +94,6 @@ Some things that would be easy to PR in, if someone was up to it
   - Make path to ffprobe configurable?
 
 # Command line Usage
-
-## Setup
-Setup configurations in the configurations folder as per your requirements.  These files need to be valid JSON
-e.g.
-```
-{
-  "ValidCodecs": [ "hap", "h264" ],
-  "MaxWidth": 2048,
-  "MaxHeight": 1024,
-  "FrameRates": [ 30, 60 ],
-  "MaxBitRate": 1024
-}
-```
-- ValidCodec: an array of codec names that are valid
-- MaxWidth: the largest the video width can be.
-- MaxHeight: the largest the video height can be.
-- FrameRates: An array of integer values for acceptable framerates.
-- Max Bitrate:  The highest acceptable bitrack in KBPS.
-
-
-## Basic Usage
 ```
 ./VideoTesterConsoleApp -i YOUR_FILE_HERE.EXTENSION
 ```
