@@ -77,7 +77,7 @@ The below screenshot shows an example of the commandline application indicating 
 
 # Known Issues:
 ~~HAP Codec files width and height, need to be divisble by 4, however the logic to check if we have HAP codec specified, is currently flawed as it doesn't account for all the different flavours of HAP~~.
-Configuration will not pass if video is set to hap and not divisible by 4. While this is the correct behaviour, it does not show thing to the user and will seem like a bug.
+Configuration will not pass if video is set to hap and not divisible by 4. While this is the correct behaviour, it does not show this to the user and will seem like a bug.
 
 
 # Low hanging fruit
