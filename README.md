@@ -34,7 +34,7 @@ Currently it is just configured to allow h264 files to pass.  In the demo below,
 Some things that would be easy to PR in, if someone was up to it
 - ~~Neaten up files locations and interfaces~~
 - ~~Separate out logic for parsing FFMPEG meta data~~
-- Start documenting library API before it gets out of hand.
+- ~~Start documenting library API before it gets out of hand~~
 - Setup linting rules.
 - ~~Read config from json~~ (it will try parse all JSON files in the Configurations directory).
 - ~~Rename the folder for the Console project (it is badly named).~~
@@ -56,6 +56,38 @@ Some things that would be easy to PR in, if someone was up to it
 - Build little GUI with dotNet MAUI
   - Make path to ffprobe configurable?
 
+# Api
+The Api can be found in **SRC/LibVideoTester/Api/Api.cs**
+
+Usage 1) The One Liner
+```
+Dictionary<string, Configuration> results = await VideoTesterApi.ExtractMetaDataAndFindConfigMatchesAsync("/movie.mov");
+if (results.Keys.Count > 0){
+  //you have a  configuration that matches!!
+}
+```
+Usage 2) Do it in steps for more control
+```
+//1) Get our video meta data
+VideoMetaData data = await VideoTesterApi.GetVideoMetaDataAsync("/movie.mov");          
+
+//2) Read our configurations from directory
+Dictionary<string, Configuration> configuration = await VideoTesterApi.GetConfigurationsAsync();
+
+//3) Check for matches
+Dictionary<string, Configuration> results = VideoTesterApi.FindMatches(data, configuration);
+```
+
+Usage 3) Advanced (changing default behaviour)
+```
+//This will  override default behaviour and isntead of reading from FFProbe, it will just use some dummy data, as per our tests
+VideoMetaData data = await VideoTesterApi.GetVideoMetaDataAsync("/movie.mov",new DummyMetaDataGenerator());      
+
+//In this contrived example we will fetch configs from AWS S3 instead of disk, and replace our json deserializer with a Yaml deserializer
+Dictionary<string, Configuration> configuration = VideoTesterApi.GetConfigurationsAsync("Configurations", new S3FileProvider(), new YamlDeserializer<Configuration>())
+
+
+```
 
 
 # Usage and Contribution
