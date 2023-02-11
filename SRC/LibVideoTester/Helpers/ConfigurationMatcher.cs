@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using LibVideoTester.Models;
 
-namespace LibVideoTester
+namespace LibVideoTester.Helpers
 {
     public static class ConfigurationMatcher
     {

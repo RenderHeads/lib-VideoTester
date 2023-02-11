@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Linq;
 using LibVideoTester.Providers;
 using LibVideoTester.Serialization;
+using LibVideoTester.Models;
+using LibVideoTester.Factories;
 
 namespace VideoTesterTests
 {
@@ -58,7 +60,7 @@ namespace VideoTesterTests
         [Test]
         public void shouldReturn2Configurations()
         {
-            ConfigurationReader reader = new ConfigurationReader(_fileProvider,_deserializer);
+            ConfigurationFactory reader = new ConfigurationFactory(_fileProvider,_deserializer);
             Assert.AreEqual(0, reader.GetConfigurationCount());
             reader.ReadConfigurations("/");
             Assert.AreEqual(2, reader.GetConfigurationCount());
@@ -67,7 +69,7 @@ namespace VideoTesterTests
         [Test]
         public void shouldReturnValidConfigurationAfterReading()
         {
-            ConfigurationReader reader = new ConfigurationReader(_fileProvider, _deserializer);
+            ConfigurationFactory reader = new ConfigurationFactory(_fileProvider, _deserializer);
             Dictionary<string,Configuration> configuration = reader.GetConfigurations().GetAwaiter().GetResult();
             Assert.AreEqual(0, configuration.Keys.Count());
 

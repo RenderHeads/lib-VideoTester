@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using LibVideoTester;
+using LibVideoTester.Models;
+
 namespace VideoTesterTests
 {
     public class ValidateVideoInfoTests

@@ -8,6 +8,8 @@
     <None Remove="Newtonsoft.Json" />
     <None Remove="Providers\" />
     <None Remove="Serialization\" />
+    <None Remove="Factories\" />
+    <None Remove="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
@@ -15,5 +17,7 @@
   <ItemGroup>
     <Folder Include="Providers\" />
     <Folder Include="Serialization\" />
+    <Folder Include="Factories\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>

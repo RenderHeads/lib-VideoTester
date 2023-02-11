@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 using LibVideoTester;
 using NUnit.Framework;
 using LibVideoTester.Providers;
+using LibVideoTester.Factories;
+using LibVideoTester.Models;
+
 namespace VideoTesterTests
 {
     public class DummyMetaDataGenerator : IVideoMetaDataProvider

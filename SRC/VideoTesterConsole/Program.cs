@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using LibVideoTester;
+using LibVideoTester.Factories;
+using LibVideoTester.Helpers;
+using LibVideoTester.Models;
 using LibVideoTester.Providers;
 using LibVideoTester.Serialization;
 using Serilog;
@@ -32,7 +35,7 @@ namespace VideoTester
                     v.GetFramerate(),
                     v.GetCodec());
 
-                ConfigurationReader configurationReader = new ConfigurationReader(new JsonFileProvider(),
+                ConfigurationFactory configurationReader = new ConfigurationFactory(new JsonFileProvider(),
                     new NewtonSoftJsonDeserializer<Configuration>());
                 List<Configuration> configurations = GenerateStandardConfig();
                 configurationReader.ReadConfigurations("Configurations");

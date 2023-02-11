@@ -1,5 +1,5 @@
 ﻿using System;
-namespace LibVideoTester
+namespace LibVideoTester.Models
 {
     public struct Configuration
     {

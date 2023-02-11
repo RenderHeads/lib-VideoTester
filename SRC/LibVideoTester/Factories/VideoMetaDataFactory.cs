@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using LibVideoTester.Models;
 using LibVideoTester.Providers;
 
-namespace LibVideoTester
+namespace LibVideoTester.Factories
 {
 
     public class VideoMetaDataFactory

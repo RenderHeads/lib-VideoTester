@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using LibVideoTester;
 using System.Collections.Generic;
+using LibVideoTester.Models;
+using LibVideoTester.Helpers;
 
 namespace VideoTesterTests
 {

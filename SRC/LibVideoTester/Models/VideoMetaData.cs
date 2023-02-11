@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-namespace LibVideoTester
+namespace LibVideoTester.Models
 {
     public class VideoMetaData
     {

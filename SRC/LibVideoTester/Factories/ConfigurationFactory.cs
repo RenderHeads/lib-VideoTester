@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LibVideoTester.Models;
 using LibVideoTester.Providers;
 using LibVideoTester.Serialization;
 
-namespace LibVideoTester
+namespace LibVideoTester.Factories
 {
-    public class ConfigurationReader
+    public class ConfigurationFactory
     {
         private IFileProvider _fileProvider;
         private IDeserializer<Configuration> _deserializer;
         private string[] _paths = new string[0];
-        public ConfigurationReader(IFileProvider fileProvider, IDeserializer<Configuration> deserializer)
+        public ConfigurationFactory(IFileProvider fileProvider, IDeserializer<Configuration> deserializer)
         {
             _fileProvider = fileProvider;
             _deserializer = deserializer;
