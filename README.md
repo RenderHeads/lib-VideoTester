@@ -67,8 +67,14 @@ Currently it is just configured to allow h264 files to pass.  In the demo below,
 
 <img width="1115" alt="image" src="https://user-images.githubusercontent.com/18391483/218257157-f35af1f6-3bf5-4b83-bb05-1ab504bc04a6.png">
 
+# Known Issues:
+HAP Codec files width and height, need to be divisble by 4, however the logic to check if we have HAP codec specified, is currently flawed as it doesn't account for all the different flavours of HAP.
+
+
+
 # Low hanging fruit
 Some things that would be easy to PR in, if someone was up to it
+-  Upgrade  CLI and test project from dotnet Core 3.1 to 6.
 -  Handle corrupted Json files
 - ~~Neaten up files locations and interfaces~~
 - ~~Separate out logic for parsing FFMPEG meta data~~
