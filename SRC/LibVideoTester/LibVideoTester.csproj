@@ -9,7 +9,6 @@
     <None Remove="Providers\" />
     <None Remove="Serialization\" />
     <None Remove="Factories\" />
-    <None Remove="Helpers\" />
     <None Remove="API\" />
   </ItemGroup>
   <ItemGroup>
@@ -19,7 +18,6 @@
     <Folder Include="Providers\" />
     <Folder Include="Serialization\" />
     <Folder Include="Factories\" />
-    <Folder Include="Helpers\" />
     <Folder Include="API\" />
   </ItemGroup>
 </Project>

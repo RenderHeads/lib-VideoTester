@@ -15,7 +15,7 @@ namespace LibVideoTester
         {
             var process = new Process
             {
-                StartInfo = { FileName = "EXECUTABLE_NAME",
+                StartInfo = { FileName = EXECUTABLE_NAME,
                 Arguments = $"-v error -select_streams v:0 -show_entries stream=width,height,duration,bit_rate,r_frame_rate,codec_name -of default=noprint_wrappers=1 \"{filename}\"",
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
