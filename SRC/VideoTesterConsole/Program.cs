@@ -29,11 +29,11 @@ namespace VideoTester
                 log.Information("Checking Video {path} ", args[0]);
                 VideoMetaData v = videoInfoGenerator.GetVideoInfoAsync(args[0]).GetAwaiter().GetResult();
                 log.Information("Meta data retrieved from file width:{width}, height:{height}, bitrate:{bitrate}, fps: {fps}, codec: {codec}",
-                    v.GetWidth(),
-                    v.GetHeight(),
-                    v.GetBitrate(),
-                    v.GetFramerate(),
-                    v.GetCodec());
+                    v.Width,
+                    v.Height,
+                    v.BitrateKPBS,
+                    v.FrameRate,
+                    v.Codec);
 
                 ConfigurationFactory configurationReader = new ConfigurationFactory(new JsonFileProvider(),
                     new NewtonSoftJsonDeserializer<Configuration>());

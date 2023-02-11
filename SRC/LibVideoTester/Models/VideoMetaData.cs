@@ -4,37 +4,37 @@ namespace LibVideoTester.Models
 {
     public class VideoMetaData
     {
-        private string _codec;
-        private int _width;
-        private int _height;
-        private int _bitrateKPBS;
-        private int _frameRate;   
+        public string Codec { get; private set; }
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+        public int BitrateKPBS { get; private set; }
+        public int FrameRate { get; private set; } 
         public VideoMetaData(string codec, int width, int height, int frameRate, int bitrateKBPS)
         {
-            _codec = codec;
-            _width = width;
-            _height = height;
-            _frameRate = frameRate;
-            _bitrateKPBS = bitrateKBPS;
+            Codec = codec;
+            Width = width;
+            Height = height;
+            FrameRate = frameRate;
+            BitrateKPBS = bitrateKBPS;
         }
 
         //TODO: Refactor this to something better, we don't actually know what hap codec will be presented as, and there are a few options of hap
         public bool IsHap()
         {
-            return _codec == "hap";
+            return Codec == "hap";
         }
 
         public bool CodecValid(Configuration c)
         {
-            return c.ValidCodecs.Count(x => x == _codec) > 0;
+            return c.ValidCodecs.Count(x => x == Codec) > 0;
         }
 
         public bool ResolutionValid(Configuration c)
         {
-            bool withinRange = _width <= c.MaxWidth && _height <= c.MaxHeight;
+            bool withinRange = Width <= c.MaxWidth && Height <= c.MaxHeight;
             if (IsHap())
             {
-                return _width % 4 == 0 && _height % 4 == 0 && withinRange;
+                return Width % 4 == 0 && Height % 4 == 0 && withinRange;
             }
             return withinRange;
           
@@ -47,38 +47,15 @@ namespace LibVideoTester.Models
 
         public bool FramerateValid(Configuration c)
         {
-            return c.FrameRates.Count(x => _frameRate == x) > 0;
+            return c.FrameRates.Count(x => FrameRate == x) > 0;
         }
 
         public bool BitrateValid(Configuration c)
         {
-            return _bitrateKPBS <= c.MaxBitRate;
+            return BitrateKPBS <= c.MaxBitRate;
         }
 
-        public int GetWidth()
-        {
-            return _width;
-        }
-
-        public int GetHeight()
-        {
-            return _height;
-        }
-
-        public int GetBitrate()
-        {
-            return _bitrateKPBS;
-        }
-
-        public int GetFramerate()
-        {
-            return _frameRate;
-        }
-
-        public string GetCodec()
-        {
-            return _codec;
-        }
+     
     }
 }
 
