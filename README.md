@@ -36,13 +36,15 @@ Configurations are sepcified in json format in a ```Configurations``` folder.
 Below is an example configraution file - These files need to be valid JSON
 ```
 {
-  "ValidCodecs": [ "hap", "h264" ],
+  "Namme": "Transparent Videos"
+  "ValidCodecs": [ "hap" ],
   "MaxWidth": 2048,
   "MaxHeight": 1024,
   "FrameRates": [ 30, 60 ],
   "MaxBitRate": 1024
 }
 ```
+- Name: A friendly name to give the configuration for display purposes.
 - ValidCodec: an array of codec names that are valid
 - MaxWidth: the largest the video width can be.
 - MaxHeight: the largest the video height can be.
