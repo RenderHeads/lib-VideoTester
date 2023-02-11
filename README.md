@@ -84,6 +84,7 @@ Some things that would be easy to PR in, if someone was up to it
 - ~~Better argument handling.~~  (Using System.Commandline dotNet preview package by microsoft)
 - Add a CI pipeline to Auto Build.
 - Add a built in version of ffprobe to prevent need of  pre installed dependecy
+- Add sentry logging to console app for error logging (Be sure to setup sensible Contexts)
 
 - Add an option to generate a report and save it next to the checked file.
 
