@@ -27,8 +27,7 @@ The project is made up out of a console app, a tests project and a library.
 # Example Usage
 Currently it is just configured to allow h264 files to pass.  In the demo below, the first video passes, the second video fails.
 
-<img width="763" alt="image" src="https://user-images.githubusercontent.com/18391483/217738427-a06835f2-bef4-4f51-934c-f72cf7418373.png">
-
+<img width="1115" alt="image" src="https://user-images.githubusercontent.com/18391483/218257157-f35af1f6-3bf5-4b83-bb05-1ab504bc04a6.png">
 
 # Low hanging fruit
 Some things that would be easy to PR in, if someone was up to it
@@ -55,6 +54,11 @@ Some things that would be easy to PR in, if someone was up to it
 - Build little GUI with dotNet MAUI
   - Make path to ffprobe configurable?
 
+# Command line Usage
+to check a file, the usage is:
+```
+./VideoTesterConsoleApp -i YOUR_FILE_HERE.EXTENSION
+```
 # Api
 The Api can be found in **SRC/LibVideoTester/Api/Api.cs**
 
@@ -87,6 +91,7 @@ Dictionary<string, Configuration> configuration = VideoTesterApi.GetConfiguratio
 
 
 ```
+
 
 
 # Usage and Contribution
