@@ -90,7 +90,6 @@ namespace VideoTesterTests
 
         }
 
-
         [Test]
         public void shouldMatchAConfiguration()
         {
@@ -99,11 +98,21 @@ namespace VideoTesterTests
             Dictionary<string, Configuration> configuration = VideoTesterApi.GetConfigurationsAsync("Configurations", _fileProvider).GetAwaiter().GetResult();
             Dictionary<string, Configuration> results = VideoTesterApi.FindMatches(data, configuration);
             Assert.AreEqual(1, results.Keys.Count);
-            foreach (var key in configuration.Keys)
+            foreach (var key in results.Keys)
             {
-                Assert.AreEqual(DummyData[key], configuration[key]);
+                Assert.AreEqual(DummyData[key], results[key]);
             }
 
+        }
+        [Test]
+        public void shouldMatchAConfigurationUsingSimplePath()
+        {
+            Dictionary<string, Configuration> results = VideoTesterApi.ExtractMetaDataAndFindConfigMatchesAsync("/path", new DummyMetaDataGenerator(), _fileProvider).GetAwaiter().GetResult();
+            Assert.AreEqual(1, results.Keys.Count);
+            foreach (var key in results.Keys)
+            {
+                Assert.AreEqual(DummyData[key], results[key]);
+            }
         }
 
     }

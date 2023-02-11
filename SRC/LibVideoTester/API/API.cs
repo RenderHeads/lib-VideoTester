@@ -5,6 +5,7 @@ using LibVideoTester.Providers;
 using LibVideoTester.Serialization;
 using LibVideoTester.Factories;
 using System.Collections.Generic;
+using System.IO;
 
 namespace LibVideoTester.Api
 {
@@ -38,6 +39,17 @@ namespace LibVideoTester.Api
                 }
             }     
             return matches;
+        }
+
+
+        public static async Task<Dictionary<string, Configuration>> ExtractMetaDataAndFindConfigMatchesAsync(string pathToVideo, IVideoMetaDataProvider metaDataProvider = null, IFileProvider fileProvider = null)
+        {
+            IVideoMetaDataProvider metaDataProviderToUse = metaDataProvider == null ? new FFProbeMetaDataProvider() : metaDataProvider;
+            IFileProvider fileProviderToUse = fileProvider == null ? new JsonFileProvider() : fileProvider;
+
+            VideoMetaData metaData = await GetVideoMetaDataAsync(pathToVideo, metaDataProviderToUse);
+            Dictionary<string, Configuration> configs =  await GetConfigurationsAsync("Configurations",fileProviderToUse);
+            return FindMatches(metaData, configs);
         }
     }
 }
