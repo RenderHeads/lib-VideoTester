@@ -95,8 +95,8 @@ Some things that would be easy to PR in, if someone was up to it
 # Version 1 MVP Requirements (can do in any order):
 - Add linting rules and clean up formatting
 - Add a CI pipeline to Auto Build.
-- Add sentry logging to console app for error logging (Be sure to setup sensible Contexts)
-- Add check for ffprobe on path and if it can't find it print an error
+- Add sentry logging to CLI + app for error logging (Be sure to setup sensible Contexts)
+- Bundle ffprobe in release so we don't have to rely on PATH
 - Make sure GUI tool works on windows and mac (currently will probably only work on mac)
 - Make sure we can handle the "divisble by 4" check for HAP videos.
 
