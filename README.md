@@ -97,13 +97,18 @@ Some things that would be easy to PR in, if someone was up to it
 - Add a CI pipeline to Auto Build.
 - Add sentry logging to console app for error logging (Be sure to setup sensible Contexts)
 - Add check for ffprobe on path and if it can't find it print an error
-- Build little GUI with dotNet MAUI
+- Make sure GUI tool works on windows and mac (currently will probably only work on mac)
 - Make sure we can handle the "divisble by 4" check for HAP videos.
 
 # Limitations
 - We only check the first stream of the video file.
 - We don't get audio data and check that
 
+#GUI Tool
+
+https://user-images.githubusercontent.com/18391483/218274746-9e62e599-563f-412d-8bda-45884b366450.mov
+
+There is a GUI tool contained in the VideoTesterApp Project.  This uses dotNet MAUI and in principle can build cross platform, however it will likely only work on mac until we make it work on Windows. 
 
 
 # Api
