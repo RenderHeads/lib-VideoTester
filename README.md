@@ -82,23 +82,18 @@ Some things that would be easy to PR in, if someone was up to it
 - ~~Read config from json~~ (it will try parse all JSON files in the Configurations directory).
 - ~~Rename the folder for the Console project (it is badly named).~~
 - ~~Better argument handling.~~  (Using System.Commandline dotNet preview package by microsoft)
-- Add a CI pipeline to Auto Build.
-- Add a built in version of ffprobe to prevent need of  pre installed dependecy
-- Add sentry logging to console app for error logging (Be sure to setup sensible Contexts)
 
-- Add an option to generate a report and save it next to the checked file.
+
+#Version 1 MVP Requirements (can do in any order):
+- Add linting rules and clean up formatting
+- Add a CI pipeline to Auto Build.
+- Add sentry logging to console app for error logging (Be sure to setup sensible Contexts)
+- Add check for ffprobe on path and if it can't find it print an error
+- Build little GUI with dotNet MAUI
 
 # Limitations
 - We only check the first stream of the video file.
 - We don't get audio data and check that
-# Next Steps
-- Clean up formatting, add linting rules
-- Add CI Pipeline to auto build
-- Add in library for better command line argument handling
-- Add check for ffprobe on path and if it can't find it print an error
-- Add flag to save report to file
-- Build little GUI with dotNet MAUI
-  - Make path to ffprobe configurable?
 
 # Command line Usage
 ```
