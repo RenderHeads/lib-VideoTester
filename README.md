@@ -14,9 +14,9 @@ This project is being built to allow our internal and external team members to  
 # Dependencies
 This project requries *ffprobe* (part of ffmpeg package) installed on your compmuter and available in PATH. We  will probably  want to build this in at some point.
 ## Installing FFProbe
-- Mac (CLI): brew install ffmpeg
+- Mac (CLI): ```brew install ffmpeg```
 - Windows: Download here: https://ffmpeg.org/download.html - install and add to path manually.
-- Ubuntu(CLI): sudo apt install ffmpeg
+- Ubuntu(CLI): ```sudo apt install ffmpeg```
 
 # Project Structure
 The project is made up out of a console app, a tests project and a library.
