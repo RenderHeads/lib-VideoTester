@@ -88,7 +88,7 @@ Some things that would be easy to PR in, if someone was up to it
 - ~~Read config from json~~ (it will try parse all JSON files in the Configurations directory).
 - ~~Rename the folder for the Console project (it is badly named).~~
 - ~~Better argument handling.~~  (Using System.Commandline dotNet preview package by microsoft)
-
+- Add Name  field in configuration.
 
 # Version 1 MVP Requirements (can do in any order):
 - Add linting rules and clean up formatting
@@ -128,7 +128,7 @@ Dictionary<string, Configuration> results = VideoTesterApi.FindMatches(data, con
 
 Usage 3) Advanced (changing default behaviour)
 ```
-//This will  override default behaviour and isntead of reading from FFProbe, it will just use some dummy data, as per our tests
+//This will  override default behaviour and instead of reading from FFProbe, it will just use some dummy data, as per our tests
 VideoMetaData data = await VideoTesterApi.GetVideoMetaDataAsync("/movie.mov",new DummyMetaDataGenerator());      
 
 //In this contrived example we will fetch configs from AWS S3 instead of disk, and replace our json deserializer with a Yaml deserializer
