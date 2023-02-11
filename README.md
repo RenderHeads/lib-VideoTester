@@ -74,8 +74,8 @@ HAP Codec files width and height, need to be divisble by 4, however the logic to
 
 # Low hanging fruit
 Some things that would be easy to PR in, if someone was up to it
--  Upgrade  CLI and test project from dotnet Core 3.1 to 6.
--  Handle corrupted Json files
+-  ~~Upgrade  CLI and test project from dotnet Core 3.1 to 6.~~
+-  ~~Handle corrupted Json files~~ (Will ignore corrupted json files).
 - ~~Neaten up files locations and interfaces~~
 - ~~Separate out logic for parsing FFMPEG meta data~~
 - ~~Start documenting library API before it gets out of hand~~
