@@ -15,15 +15,11 @@ namespace VideoTester
     class Program
     {
         static void Main(string[] args)
-        {
-            
+        {            
             using var log = new LoggerConfiguration().WriteTo.Console(theme: AnsiConsoleTheme.Code).CreateLogger();
-
             log.Information("Video Checker (C) RenderHeads 2023");
-
             //NOTE: We assume ffprobe is installed and available on your path ENV.
             VideoMetaDataFactory videoInfoGenerator = new VideoMetaDataFactory(new FFProbeMetaDataProvider(), new FFprobeMetaToVideoInfo());
-   
             if (args.Length >= 1)
             {  
                 log.Information("Checking Video {path} ", args[0]);
@@ -49,15 +45,11 @@ namespace VideoTester
                         log.Information("Configuration {key} - {value}", key, configs[key]);
                     }
                 }
-
-
                 bool foundMatch = ConfigurationMatcher.TryGetMatches(v, out configurations, configurations);
-
                 if (!foundMatch)
                 {
                     log.Error("Unable to find match with a configuration this file is not valid!");
                 }
-
                 else
                 {
                     log.Information("Video matches atleast {count} configurations", configurations.Count);
