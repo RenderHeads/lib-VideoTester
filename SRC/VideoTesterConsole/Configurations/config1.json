@@ -1,4 +1,5 @@
 ﻿{
+  "Name": "SampleConfig1",
   "ValidCodecs": [ "hap", "h264" ],
   "MaxWidth": 2048,
   "MaxHeight": 1024,

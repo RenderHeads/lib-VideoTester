@@ -46,8 +46,8 @@ namespace VideoTesterTests
 
         private Dictionary<string, Configuration> DummyData = new Dictionary<string, Configuration>()
             {
-            {"/path1", new Configuration(new string[]{"hap","h264"}, 2048,1024,new int[]{30,60},1024 )},
-            {"/path2", new Configuration(new string[]{"hevc","h264"}, 512,768,new int[]{25},2048 )}
+            {"/path1", new Configuration("Config 1", new string[]{"hap","h264"}, 2048,1024,new int[]{30,60},1024 )},
+            {"/path2", new Configuration("Config 2", new string[]{"hevc","h264"}, 512,768,new int[]{25},2048 )}
 
             };
         private MockFileProvider _fileProvider;

@@ -8,10 +8,12 @@ namespace LibVideoTester.Models
         public readonly int MaxHeight;
         public readonly int[] FrameRates;
         public readonly int MaxBitRate;
+        public readonly string Name;
 
         //NOTE: If you add an attribute, be sure to include it in custom Equals
-        public Configuration(string[] validCodecs, int maxWidth, int maxHeight, int[] frameRates, int maxBitrate)
+        public Configuration(string name, string[] validCodecs, int maxWidth, int maxHeight, int[] frameRates, int maxBitrate)
         {
+            Name = name;
             ValidCodecs = validCodecs;
             MaxWidth = maxWidth;
             MaxHeight = maxHeight;
@@ -22,7 +24,7 @@ namespace LibVideoTester.Models
 
         public override string ToString()
         {
-            return $"Configuration: ValidCodecs: {string.Join(',', ValidCodecs)} FrameRates: {string.Join(',', FrameRates)} MaxWidth:{MaxWidth} MaxHeight: {MaxHeight} Bitrate: {MaxBitRate}";
+            return $"Configuration: Name: {Name} ValidCodecs: {string.Join(',', ValidCodecs)} FrameRates: {string.Join(',', FrameRates)} MaxWidth:{MaxWidth} MaxHeight: {MaxHeight} Bitrate: {MaxBitRate}";
         }
 
         //NOTE: If you add an attribute, be sure to include it in custom Equals
@@ -45,7 +47,7 @@ namespace LibVideoTester.Models
                     }
                 }
 
-                return MaxWidth == compareTo.MaxWidth &&
+                return Name == compareTo.Name && MaxWidth == compareTo.MaxWidth &&
                     MaxHeight == compareTo.MaxHeight &&
                     MaxBitRate == compareTo.MaxBitRate &&
                     String.Join(' ', ValidCodecs) == String.Join(' ', compareTo.ValidCodecs);

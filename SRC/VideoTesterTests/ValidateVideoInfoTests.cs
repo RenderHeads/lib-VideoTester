@@ -11,7 +11,7 @@ namespace VideoTesterTests
         public void Setup()
         {
             string[] validCodecs = new string[] { "hap", "h264", "hevc", "hapa", };
-            c = new Configuration(validCodecs, 500, 500, new int[] { 30, 60 }, 1024);
+            c = new Configuration("Sample Config",validCodecs, 500, 500, new int[] { 30, 60 }, 1024);
         }
 
         [Test]

@@ -30,7 +30,7 @@ namespace VideoTesterTests
             VideoMetaDataFactory generator = new VideoMetaDataFactory(new DummyMetaDataGenerator(), new FFprobeMetaToVideoInfo());
             VideoMetaData v = generator.GetVideoInfoAsync("c:/foo").GetAwaiter().GetResult(); // the file path doesn't matter
             Assert.IsNotNull(v);
-            Configuration c = new Configuration(new string[] { "h264" }, 3840, 2160, new int[] { 25 }, 23205);
+            Configuration c = new Configuration("Sample Config", new string[] { "h264" }, 3840, 2160, new int[] { 25 }, 23205);
             Assert.IsTrue(v.BitrateValid(c));
             Assert.IsTrue(v.CodecValid(c));
             Assert.IsTrue(v.FramerateValid(c));
