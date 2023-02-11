@@ -31,6 +31,7 @@ Currently it is just configured to allow h264 files to pass.  In the demo below,
 
 # Low hanging fruit
 Some things that would be easy to PR in, if someone was up to it
+-  Handle corrupted Json files
 - ~~Neaten up files locations and interfaces~~
 - ~~Separate out logic for parsing FFMPEG meta data~~
 - ~~Start documenting library API before it gets out of hand~~
@@ -55,10 +56,32 @@ Some things that would be easy to PR in, if someone was up to it
   - Make path to ffprobe configurable?
 
 # Command line Usage
-to check a file, the usage is:
+
+## Setup
+Setup configurations in the configurations folder as per your requirements.  These files need to be valid JSON
+e.g.
+```
+{
+  "ValidCodecs": [ "hap", "h264" ],
+  "MaxWidth": 2048,
+  "MaxHeight": 1024,
+  "FrameRates": [ 30, 60 ],
+  "MaxBitRate": 1024
+}
+```
+- ValidCodec: an array of codec names that are valid
+- MaxWidth: the largest the video width can be.
+- MaxHeight: the largest the video height can be.
+- FrameRates: An array of integer values for acceptable framerates.
+- Max Bitrate:  The highest acceptable bitrack in KBPS.
+
+
+## basic Usage
 ```
 ./VideoTesterConsoleApp -i YOUR_FILE_HERE.EXTENSION
 ```
+
+
 # Api
 The Api can be found in **SRC/LibVideoTester/Api/Api.cs**
 
