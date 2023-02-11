@@ -12,9 +12,9 @@ namespace VideoTesterTests
     {
         public async Task<string> GetMetaDataFromFile(string filename)
         {
-             /* the following FFPMEG command will generate this information            
-             */
-            return  @"codec_name=h264
+            /* the following FFPMEG command will generate this information            
+            */
+            return @"codec_name=h264
             width=3840
             height=2160
             r_frame_rate=25/1
@@ -27,7 +27,7 @@ namespace VideoTesterTests
         [Test]
         public void shouldReturnValidVideoInfo()
         {
-            VideoMetaDataFactory generator = new VideoMetaDataFactory(new DummyMetaDataGenerator(), new FFprobeMetaToVideoInfo() );
+            VideoMetaDataFactory generator = new VideoMetaDataFactory(new DummyMetaDataGenerator(), new FFprobeMetaToVideoInfo());
             VideoMetaData v = generator.GetVideoInfoAsync("c:/foo").GetAwaiter().GetResult(); // the file path doesn't matter
             Assert.IsNotNull(v);
             Configuration c = new Configuration(new string[] { "h264" }, 3840, 2160, new int[] { 25 }, 23205);
