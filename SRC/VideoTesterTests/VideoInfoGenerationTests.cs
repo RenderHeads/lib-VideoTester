@@ -5,7 +5,7 @@ using NUnit.Framework;
 using LibVideoTester.Providers;
 using LibVideoTester.Factories;
 using LibVideoTester.Models;
-
+using LibVideoTester.Serialization;
 namespace VideoTesterTests
 {
     public class DummyMetaDataGenerator : IVideoMetaDataProvider
@@ -27,7 +27,7 @@ namespace VideoTesterTests
         [Test]
         public void shouldReturnValidVideoInfo()
         {
-            VideoMetaDataFactory generator = new VideoMetaDataFactory(new DummyMetaDataGenerator());
+            VideoMetaDataFactory generator = new VideoMetaDataFactory(new DummyMetaDataGenerator(), new FFprobeMetaToVideoInfo() );
             VideoMetaData v = generator.GetVideoInfoAsync("c:/foo").GetAwaiter().GetResult(); // the file path doesn't matter
             Assert.IsNotNull(v);
             Configuration c = new Configuration(new string[] { "h264" }, 3840, 2160, new int[] { 25 }, 23205);

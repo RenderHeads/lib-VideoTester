@@ -33,7 +33,7 @@ Currently it is just configured to allow h264 files to pass.  In the demo below,
 # Low hanging fruit
 Some things that would be easy to PR in, if someone was up to it
 - ~~Neaten up files locations and interfaces~~
-- Separate out logic for parsing FFMPEG meta data
+- ~~Separate out logic for parsing FFMPEG meta data~~
 - Start documenting library API before it gets out of hand.
 - Setup linting rules.
 - ~~Read config from json~~ (it will try parse all JSON files in the Configurations directory).

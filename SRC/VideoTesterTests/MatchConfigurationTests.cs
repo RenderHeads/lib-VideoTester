@@ -20,16 +20,9 @@ namespace VideoTesterTests
             Configuration config1 = new Configuration(validCodecs,1920,1080, new int[] {30,60},1024);
             Configuration config2 = new Configuration(validCodecs, 200, 200, new int[] { 30,60}, 1024);
             VideoMetaData v = new VideoMetaData("hap",400,400,30,1024);
-
             List<Configuration> matches = null;
             Assert.IsTrue(ConfigurationMatcher.TryGetMatches(v, out matches, new List<Configuration> { config1, config2 }));
-            Assert.Contains(config1, matches);
-            
-            
+            Assert.Contains(config1, matches);            
         }
-
-  
-
-
     }
 }
