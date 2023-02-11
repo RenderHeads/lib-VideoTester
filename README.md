@@ -104,7 +104,7 @@ Some things that would be easy to PR in, if someone was up to it
 - We only check the first stream of the video file.
 - We don't get audio data and check that
 
-#GUI Tool
+# GUI Tool
 
 https://user-images.githubusercontent.com/18391483/218274746-9e62e599-563f-412d-8bda-45884b366450.mov
 
