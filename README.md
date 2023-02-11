@@ -84,7 +84,7 @@ Some things that would be easy to PR in, if someone was up to it
 - ~~Better argument handling.~~  (Using System.Commandline dotNet preview package by microsoft)
 
 
-#Version 1 MVP Requirements (can do in any order):
+# Version 1 MVP Requirements (can do in any order):
 - Add linting rules and clean up formatting
 - Add a CI pipeline to Auto Build.
 - Add sentry logging to console app for error logging (Be sure to setup sensible Contexts)
