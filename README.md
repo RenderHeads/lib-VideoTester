@@ -9,12 +9,12 @@
 
 
 # Video Sanity Testing Tool
-This project is intended to allow our internal and external team members to quickly check if a video file matches a specific configuration that we need, to ensure the video will work in the game / application it has been made for. The intention is to catch problems with files early on in the process and prevent slow downs later on in the development process.
+This project is intended to allow our internal and external team members to quickly check if a video file matches a specific configuration that we need, to ensure the video will work in the game / application it has been made for. The intention is to catch problems with video files early on in the process and prevent slow downs later on in the development process.
 
 ## Principle Design:
-FFProbe can provided us with meta data in a format that is pretty easy to parse. Given the complicated nature of the syntax, this acts as a wrapper tool that  generally simplifies things for the non power-user.
+FFProbe can provided us with meta data in a format that is pretty easy to parse. Given the complicated nature of the syntax, this project acts as a wrapper tool that generally simplifies things for the non power-user.
 
-For example the following command:
+For example the following ffprobe command:
 ```
 ffprobe -v error -select_streams v:0 -show_entries stream=width,height,duration,bit_rate,r_frame_rate,codec_name -of default=noprint_wrappers=1 myvideo.mov
 ```
@@ -29,7 +29,7 @@ duration=13.800000
 bit_rate=23204268
 ```
 
-This is pretty easy to then parse and compare against some known configuration. This project provides an API to get these details, as well as compare them against configurations. It also has a CLI tool that implements the API.
+This is pretty easy to then parse and compare against some known configuration. This project provides an API to get these details, as well as compare them against configurations. It also has a CLI tool  and simple GUI that implements the API.
 
 Configurations are sepcified in json format in a ```Configurations``` folder.
 
@@ -53,7 +53,7 @@ Below is an example configraution file - These files need to be valid JSON
 
 
 # Dependencies
-This project requries *ffprobe* (part of ffmpeg package) installed on your compmuter and available in PATH. We may make a version that distributes this together with the build.
+This project requries *ffprobe* (part of ffmpeg package) installed on your computer and available in PATH. We may make a version that distributes this together with the build.
 ## Installing FFProbe
 - Mac (CLI): ```brew install ffmpeg```
 - Windows: Download here: https://ffmpeg.org/download.html - install and add to path manually.
@@ -98,7 +98,7 @@ Some things that would be easy to PR in, if someone was up to it
 - Add sentry logging to CLI + app for error logging (Be sure to setup sensible Contexts)
 - Bundle ffprobe in release so we don't have to rely on PATH
 - Make sure GUI tool works on windows and mac (currently will probably only work on mac)
-- Make sure we can handle the "divisble by 4" check for HAP videos.
+- Make sure we can handle the "divisble by 4" check for HAP videos in a way that the user understands.
 
 # Limitations
 - We only check the first stream of the video file.
@@ -118,7 +118,7 @@ Usage 1) The One Liner
 ```
 Dictionary<string, Configuration> results = await VideoTesterApi.ExtractMetaDataAndFindConfigMatchesAsync("/movie.mov");
 if (results.Keys.Count > 0){
-  //you have a  configuration that matches!!
+  //you have a configuration that matches!!
 }
 ```
 Usage 2) Do it in steps for more control
@@ -135,7 +135,7 @@ Dictionary<string, Configuration> results = VideoTesterApi.FindMatches(data, con
 
 Usage 3) Advanced (changing default behaviour)
 ```
-//This will  override default behaviour and instead of reading from FFProbe, it will just use some dummy data, as per our tests
+//This will override default behaviour and instead of reading from FFProbe, it will just use some dummy data, as per our tests
 VideoMetaData data = await VideoTesterApi.GetVideoMetaDataAsync("/movie.mov",new DummyMetaDataGenerator());      
 
 //In this contrived example we will fetch configs from AWS S3 instead of disk, and replace our json deserializer with a Yaml deserializer
@@ -143,7 +143,6 @@ Dictionary<string, Configuration> configuration = VideoTesterApi.GetConfiguratio
 
 
 ```
-
 
 
 # Usage and Contribution
