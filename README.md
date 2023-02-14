@@ -7,7 +7,7 @@
 </p>
 <p align ="center"> Author / Maintainer: Shane Marks </p>
 
-
+<p align ="center"> Contributors: Ruan Moolman </p>
 # Video Sanity Testing Tool
 This project is intended to allow our internal and external team members to quickly check if a video file matches a specific configuration that we need, to ensure the video will work in the game / application it has been made for. The intention is to catch problems with video files early on in the process and prevent slow downs later on in the development process.
 
