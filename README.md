@@ -36,7 +36,7 @@ Configurations are sepcified in json format in a ```Configurations``` folder.
 Below is an example configraution file - These files need to be valid JSON
 ```
 {
-  "Namme": "Transparent Videos"
+  "Name": "Transparent Videos"
   "ValidCodecs": [ "hap" ],
   "MaxWidth": 2048,
   "MaxHeight": 1024,
@@ -55,7 +55,7 @@ Below is an example configraution file - These files need to be valid JSON
 # Dependencies
 This project requries *ffprobe* (part of ffmpeg package) installed on your computer and available in PATH. We may make a version that distributes this together with the build.
 ## Installing FFProbe
-- Mac (CLI): ```brew install ffmpeg```
+- Mac (CLI): Run `./download-ffprobe` from the repo's root directory. If you want a system install of *ffprobe* run `brew install ffprobe`.
 - Windows: Download here: https://ffmpeg.org/download.html - install and add to path manually.
 - Ubuntu(CLI): ```sudo apt install ffmpeg```
 
