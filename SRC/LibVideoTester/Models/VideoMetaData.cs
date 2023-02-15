@@ -52,11 +52,8 @@ namespace LibVideoTester.Models
 
         public bool ResolutionValid(Configuration c, out ResolutionValidationFailureReason failureReason)
         {
-            ResolutionValidationFailureReason AppendIfNotNone(ResolutionValidationFailureReason input, ResolutionValidationFailureReason toAppend)
-            {
-                return input == ResolutionValidationFailureReason.None ? toAppend : input | toAppend;
-            }
-
+            ResolutionValidationFailureReason AppendIfNotNone(ResolutionValidationFailureReason input, ResolutionValidationFailureReason toAppend) => input == ResolutionValidationFailureReason.None ? toAppend : input | toAppend;
+            
             failureReason = ResolutionValidationFailureReason.None;
             if (IsHap())
             {
