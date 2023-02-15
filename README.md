@@ -33,9 +33,9 @@ bit_rate=23204268
 
 This is pretty easy to then parse and compare against some known configuration. This project provides an API to get these details, as well as compare them against configurations. It also has a CLI tool  and simple GUI that implements the API.
 
-Configurations are sepcified in json format in a ```Configurations``` folder.
+Configurations are specified in json format in a ```Configurations``` folder.
 
-Below is an example configraution file - These files need to be valid JSON
+Below is an example configuration file - These files need to be valid JSON
 ```
 {
   "Name": "Transparent Videos"
@@ -50,12 +50,12 @@ Below is an example configraution file - These files need to be valid JSON
 - ValidCodec: an array of codec names that are valid
 - MaxWidth: the largest the video width can be.
 - MaxHeight: the largest the video height can be.
-- FrameRates: An array of integer values for acceptable framerates.
-- Max Bitrate:  The highest acceptable bitrack in KBPS.
+- FrameRates: An array of integer values for acceptable frame rates.
+- Max Bitrate:  The highest acceptable bitrate in KBPS.
 
 
 # Dependencies
-This project requries *ffprobe* (part of ffmpeg package) installed on your computer and available in PATH. We may make a version that distributes this together with the build.
+This project requires *ffprobe* (part of ffmpeg package) installed on your computer and available in PATH. We may make a version that distributes this together with the build.
 
 ## Installing FFProbe
 - Mac (CLI): Run `./download-ffprobe` from the repo's root directory. If you want a system install of *ffprobe* run `brew install ffprobe`.
@@ -79,7 +79,7 @@ The below screenshot shows an example of the commandline application indicating 
 <img width="1115" alt="image" src="https://user-images.githubusercontent.com/18391483/218257157-f35af1f6-3bf5-4b83-bb05-1ab504bc04a6.png">
 
 # Known Issues:
-~~HAP Codec files width and height, need to be divisble by 4, however the logic to check if we have HAP codec specified, is currently flawed as it doesn't account for all the different flavours of HAP~~.
+~~HAP Codec files width and height, need to be divisible by 4, however the logic to check if we have HAP codec specified, is currently flawed as it doesn't account for all the different flavours of HAP~~.
 Configuration will not pass if video is set to hap and not divisible by 4. While this is the correct behaviour, it does not show this to the user and will seem like a bug.
 
 
@@ -152,7 +152,7 @@ Trunk based development is used in this project, and as such, PRs will be squash
 
 # Usage and Contribution
 ## Usage License
-The project is licensed under a GPL-3.0 license, which means you can use it for commerical and non commercial use, but the project you use it in also needs to apply the GPL-3.0 license and be open-sourced. If this license is not suitable for you, please contact us at southafrica@renderheads.com and we can discuss an appropriate commercial license.
+The project is licensed under a GPL-3.0 license, which means you can use it for commercial and non commercial use, but the project you use it in also needs to apply the GPL-3.0 license and be open-sourced. If this license is not suitable for you, please contact us at southafrica@renderheads.com and we can discuss an appropriate commercial license.
 
 ## Contributors License
 We are currently working on a Contributors License Agreement, which we will put up here when it's ready. In the meantime, if you would like to contribute, please reach out to us.
