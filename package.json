@@ -1,0 +1,7 @@
+{
+  "name": "lib-VideoTester",
+  "packageManager": "yarn@3.4.1",
+  "devDependencies": {
+    "danger": "^11.2.3"
+  }
+}
