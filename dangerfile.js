@@ -6,6 +6,9 @@ let title = danger.github.pr.title;
 if (title[0] !== title[0].toUpperCase()) {
   fail("PR title needs to start with an uppercase letter.")
 }
+if (title.length > 80) {
+  fail("PR title is too long (max 80 characters).")
+}
 
 // Every PR needs someone assigned to it
 if (!danger.github.pr.assignee) {
