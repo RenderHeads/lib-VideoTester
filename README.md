@@ -8,7 +8,9 @@
 <p align ="center"> Author / Maintainer: Shane Marks </p>
 
 <p align ="center"> Contributors: Ruan Moolman </p>
+
 # Video Sanity Testing Tool
+
 This project is intended to allow our internal and external team members to quickly check if a video file matches a specific configuration that we need, to ensure the video will work in the game / application it has been made for. The intention is to catch problems with video files early on in the process and prevent slow downs later on in the development process.
 
 ## Principle Design:
@@ -54,6 +56,7 @@ Below is an example configraution file - These files need to be valid JSON
 
 # Dependencies
 This project requries *ffprobe* (part of ffmpeg package) installed on your computer and available in PATH. We may make a version that distributes this together with the build.
+
 ## Installing FFProbe
 - Mac (CLI): Run `./download-ffprobe` from the repo's root directory. If you want a system install of *ffprobe* run `brew install ffprobe`.
 - Windows: Download here: https://ffmpeg.org/download.html - install and add to path manually.
@@ -65,7 +68,7 @@ This project requries *ffprobe* (part of ffmpeg package) installed on your compu
 - We use the Visual Studio IDE, but any will do.
 
 
-# Example  Commandline Usage 
+# Example Command Line Usage
 
 ```
 ./VideoTesterConsoleApp -i YOUR_FILE_HERE.EXTENSION
@@ -144,6 +147,8 @@ Dictionary<string, Configuration> configuration = VideoTesterApi.GetConfiguratio
 
 ```
 
+# Git workflow
+Trunk based development is used in this project, and as such, PRs will be squashed and rebased onto `main` when merged.
 
 # Usage and Contribution
 ## Usage License
