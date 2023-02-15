@@ -54,13 +54,6 @@ namespace VideoTesterTests
             Assert.AreEqual(VideoMetaData.ResolutionValidationFailureReason.HeightTooLarge | VideoMetaData.ResolutionValidationFailureReason.WidthTooLarge | VideoMetaData.ResolutionValidationFailureReason.NotDivisbleByFourWidth | VideoMetaData.ResolutionValidationFailureReason.NotDivisbleByFourHeight, failureReason);
         }
 
-        /*[Test]
-        public void shouldReturnFailureReasonHapNotDivisbleByFourAndTooLarge()
-        {
-            VideoMetaData v = new VideoMetaData("hap", 123, 400, 30, 1024);
-            Assert.IsFalse(v.ResolutionValid(c));
-        }*/
-
         [Test]
         public void shouldHaveValidConfig()
         {
