@@ -11,7 +11,7 @@ namespace VideoTesterTests
         public void Setup()
         {
             string[] validCodecs = new string[] { "hap", "h264", "hevc", "hapa", };
-            c = new Configuration("Sample Config",validCodecs, 500, 500, new int[] { 30, 60 }, 1024);
+            c = new Configuration("Sample Config", validCodecs, 500, 500, new int[] { 30, 60 }, 1024);
         }
 
         [Test]
@@ -35,6 +35,31 @@ namespace VideoTesterTests
             VideoMetaData v = new VideoMetaData("hap", 123, 400, 30, 1024);
             Assert.IsFalse(v.ResolutionValid(c));
         }
+
+        [Test]
+        public void shouldReturnFailureReasonHapNotDivisbleByFour()
+        {
+            VideoMetaData v = new VideoMetaData("hap", 123, 127, 30, 1024);
+            VideoMetaData.ResolutionValidationFailureReason failureReason;
+            Assert.IsFalse(v.ResolutionValid(c, out failureReason));
+            Assert.AreEqual(VideoMetaData.ResolutionValidationFailureReason.NotDivisbleByFourWidth | VideoMetaData.ResolutionValidationFailureReason.NotDivisbleByFourHeight, failureReason);
+        }
+
+        [Test]
+        public void shouldReturnFailureReasonHapNotDivisbleByFourAndWidthAndHeightTooBig()
+        {
+            VideoMetaData v = new VideoMetaData("hap",999999, 99999, 30, 1024);
+            VideoMetaData.ResolutionValidationFailureReason failureReason;
+            Assert.IsFalse(v.ResolutionValid(c, out failureReason));
+            Assert.AreEqual(VideoMetaData.ResolutionValidationFailureReason.HeightTooLarge | VideoMetaData.ResolutionValidationFailureReason.WidthTooLarge | VideoMetaData.ResolutionValidationFailureReason.NotDivisbleByFourWidth | VideoMetaData.ResolutionValidationFailureReason.NotDivisbleByFourHeight, failureReason);
+        }
+
+        /*[Test]
+        public void shouldReturnFailureReasonHapNotDivisbleByFourAndTooLarge()
+        {
+            VideoMetaData v = new VideoMetaData("hap", 123, 400, 30, 1024);
+            Assert.IsFalse(v.ResolutionValid(c));
+        }*/
 
         [Test]
         public void shouldHaveValidConfig()
