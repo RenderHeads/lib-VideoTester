@@ -5,18 +5,6 @@ namespace LibVideoTester.Models
     public class VideoMetaData
     {
 
-        /// <summary>
-        /// Possible reasons that our resolution check fails to give some insight to users.
-        /// </summary>
-        [System.Flags]
-        public enum ResolutionValidationFailureReason
-        {
-            None = 0,
-            NotDivisbleByFourWidth = 1,
-            NotDivisbleByFourHeight = 2,
-            WidthTooLarge = 4,
-            HeightTooLarge = 8
-        }
 
         public string Codec { get; private set; }
         public int Width { get; private set; }
@@ -52,33 +40,12 @@ namespace LibVideoTester.Models
 
         public bool ResolutionValid(Configuration c, out ResolutionValidationFailureReason failureReason)
         {
-            ResolutionValidationFailureReason AppendIfNotNone(ResolutionValidationFailureReason input, ResolutionValidationFailureReason toAppend) => input == ResolutionValidationFailureReason.None ? toAppend : input | toAppend;
-            
-            failureReason = ResolutionValidationFailureReason.None;
-            if (IsHap())
-            {
-                if (Width % 4 != 0)
-                {
-                    failureReason = AppendIfNotNone(failureReason, ResolutionValidationFailureReason.NotDivisbleByFourWidth);
-                }
 
-                if (Height % 4 != 0)
-                {
-                    failureReason = AppendIfNotNone(failureReason, ResolutionValidationFailureReason.NotDivisbleByFourHeight);
-                }
-
-            }
-
-            if (Width > c.MaxWidth)
-            {
-                failureReason = AppendIfNotNone(failureReason, ResolutionValidationFailureReason.WidthTooLarge);
-            }
-
-            if (Height > c.MaxHeight)
-            {
-                failureReason = AppendIfNotNone(failureReason, ResolutionValidationFailureReason.HeightTooLarge);
-            }
-
+            failureReason =ResolutionValidationFailureReason.None.
+                AppendIfFalse(ResolutionValidationFailureReason.NotDivisbleByFourWidth, !IsHap()? true : IsHap() && Width % 4 == 0).
+                AppendIfFalse(ResolutionValidationFailureReason.NotDivisbleByFourHeight, !IsHap() ? true : IsHap() && Height % 4 == 0).
+                AppendIfFalse(ResolutionValidationFailureReason.WidthTooLarge, Width <= c.MaxWidth).
+                AppendIfFalse(ResolutionValidationFailureReason.HeightTooLarge, Height <= c.MaxHeight);
             return failureReason == ResolutionValidationFailureReason.None;
 
         }
