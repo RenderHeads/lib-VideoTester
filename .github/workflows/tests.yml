@@ -1,0 +1,17 @@
+name: "Tests"
+on: [pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '5.x.x'
+      - name: Display dotnet version
+        run: dotnet --version
+      - name: Test
+        run: dotnet test
+        working-directory: SRC/VideoTesterTests
