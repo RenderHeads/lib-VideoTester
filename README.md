@@ -101,7 +101,7 @@ Some things that would be easy to PR in, if someone was up to it
 - Add sentry logging to CLI + app for error logging (Be sure to setup sensible Contexts)
 - Bundle ffprobe in release so we don't have to rely on PATH
 - Make sure GUI tool works on windows and mac (currently will probably only work on mac)
-- Make sure we can handle the "divisble by 4" check for HAP videos in a way that the user understands.
+- ~~Make sure we can handle the "divisble by 4" check for HAP videos in a way that the user understands.~~
 
 # Limitations
 - We only check the first stream of the video file.
