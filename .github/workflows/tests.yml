@@ -9,7 +9,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '5.x.x'
+          dotnet-version: '6.x.x'
       - name: Display dotnet version
         run: dotnet --version
       - name: Test
