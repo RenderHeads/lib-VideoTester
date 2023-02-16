@@ -41,8 +41,8 @@ namespace LibVideoTester.Models
         public bool ResolutionValid(Configuration c, out ResolutionValidationFailureReason failureReason)
         {
 
-            failureReason =ResolutionValidationFailureReason.None.
-                AppendIfFalse(ResolutionValidationFailureReason.NotDivisbleByFourWidth, !IsHap()? true : IsHap() && Width % 4 == 0).
+            failureReason = ResolutionValidationFailureReason.None.
+                AppendIfFalse(ResolutionValidationFailureReason.NotDivisbleByFourWidth, !IsHap() ? true : IsHap() && Width % 4 == 0).
                 AppendIfFalse(ResolutionValidationFailureReason.NotDivisbleByFourHeight, !IsHap() ? true : IsHap() && Height % 4 == 0).
                 AppendIfFalse(ResolutionValidationFailureReason.WidthTooLarge, Width <= c.MaxWidth).
                 AppendIfFalse(ResolutionValidationFailureReason.HeightTooLarge, Height <= c.MaxHeight);
