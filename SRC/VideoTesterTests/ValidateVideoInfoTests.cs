@@ -40,18 +40,18 @@ namespace VideoTesterTests
         public void shouldReturnFailureReasonHapNotDivisbleByFour()
         {
             VideoMetaData v = new VideoMetaData("hap", 123, 127, 30, 1024);
-            VideoMetaData.ResolutionValidationFailureReason failureReason;
+            ResolutionValidationFailureReason failureReason;
             Assert.IsFalse(v.ResolutionValid(c, out failureReason));
-            Assert.AreEqual(VideoMetaData.ResolutionValidationFailureReason.NotDivisbleByFourWidth | VideoMetaData.ResolutionValidationFailureReason.NotDivisbleByFourHeight, failureReason);
+            Assert.AreEqual(ResolutionValidationFailureReason.NotDivisbleByFourWidth | ResolutionValidationFailureReason.NotDivisbleByFourHeight, failureReason);
         }
 
         [Test]
         public void shouldReturnFailureReasonHapNotDivisbleByFourAndWidthAndHeightTooBig()
         {
             VideoMetaData v = new VideoMetaData("hap",999999, 99999, 30, 1024);
-            VideoMetaData.ResolutionValidationFailureReason failureReason;
+            ResolutionValidationFailureReason failureReason;
             Assert.IsFalse(v.ResolutionValid(c, out failureReason));
-            Assert.AreEqual(VideoMetaData.ResolutionValidationFailureReason.HeightTooLarge | VideoMetaData.ResolutionValidationFailureReason.WidthTooLarge | VideoMetaData.ResolutionValidationFailureReason.NotDivisbleByFourWidth | VideoMetaData.ResolutionValidationFailureReason.NotDivisbleByFourHeight, failureReason);
+            Assert.AreEqual(ResolutionValidationFailureReason.HeightTooLarge | ResolutionValidationFailureReason.WidthTooLarge | ResolutionValidationFailureReason.NotDivisbleByFourWidth | ResolutionValidationFailureReason.NotDivisbleByFourHeight, failureReason);
         }
 
         [Test]
