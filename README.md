@@ -111,7 +111,7 @@ Some things that would be easy to PR in, if someone was up to it
 
 https://user-images.githubusercontent.com/18391483/218274746-9e62e599-563f-412d-8bda-45884b366450.mov
 
-There is a GUI tool contained in the VideoTesterApp Project.  This uses dotNet MAUI and in principle can build cross platform, however it will likely only work on mac until we make it work on Windows. 
+There is a GUI tool contained in the VideoTesterApp Project.  This uses dotNet MAUI and in principle can build cross platform, however it will likely only work on mac until we make it work on Windows.
 
 
 # Api
@@ -127,7 +127,7 @@ if (results.Keys.Count > 0){
 Usage 2) Do it in steps for more control
 ```
 //1) Get our video meta data
-VideoMetaData data = await VideoTesterApi.GetVideoMetaDataAsync("/movie.mov");          
+VideoMetaData data = await VideoTesterApi.GetVideoMetaDataAsync("/movie.mov");
 
 //2) Read our configurations from directory
 Dictionary<string, Configuration> configuration = await VideoTesterApi.GetConfigurationsAsync();
@@ -139,7 +139,7 @@ Dictionary<string, Configuration> results = VideoTesterApi.FindMatches(data, con
 Usage 3) Advanced (changing default behaviour)
 ```
 //This will override default behaviour and instead of reading from FFProbe, it will just use some dummy data, as per our tests
-VideoMetaData data = await VideoTesterApi.GetVideoMetaDataAsync("/movie.mov",new DummyMetaDataGenerator());      
+VideoMetaData data = await VideoTesterApi.GetVideoMetaDataAsync("/movie.mov",new DummyMetaDataGenerator());
 
 //In this contrived example we will fetch configs from AWS S3 instead of disk, and replace our json deserializer with a Yaml deserializer
 Dictionary<string, Configuration> configuration = VideoTesterApi.GetConfigurationsAsync("Configurations", new S3FileProvider(), new YamlDeserializer<Configuration>())
@@ -153,21 +153,23 @@ Dictionary<string, Configuration> configuration = VideoTesterApi.GetConfiguratio
 Trunk based development is used in this project, and as such, PRs will be squashed and rebased onto `main` when merged.
 
 ## Setup
-### Code Styling
-We use `astyle` to format the code correctly. You can install `astyle` by following [these instructions](https://astyle.sourceforge.net/install.html).
+### Git Hooks
+To help you automatically fix or get warned of simple issues when committing code, we use [pre-commit](https://pre-commit.com/).
+Install it by following [these instructions](https://pre-commit.com/#install).
 
-Then add a file watcher to your favourite IDE to automatically format your `.cs` files when you save them.
-
-*TODO*: Styling and linting will be added as pre-commit hooks and to the CI.
-
-To format a file:
+After it is installed, run the following in the repo root directory:
 ```bash
-astyle -n <FILE>
+pre-commit install
 ```
-To format all C# files in the repo:
-```
-find . -iname "*.cs" -not -path "*/obj/*" -not -path "*.xaml.cs" | xargs astyle -n
-```
+
+### Code Styling
+We use [astyle](https://astyle.sourceforge.net/) to format the code correctly. You can install `astyle` by following [these instructions](https://astyle.sourceforge.net/install.html).
+
+`astyle` should run on your C# files during the *pre-commit* hooks.
+Additionally, you could add a *file watcher* to your favourite IDE to automatically format your C# files when you save them.
+
+### Linting
+*TODO*
 
 # Usage and Contribution
 ## Usage License
@@ -175,4 +177,3 @@ The project is licensed under a GPL-3.0 license, which means you can use it for 
 
 ## Contributors License
 We are currently working on a Contributors License Agreement, which we will put up here when it's ready. In the meantime, if you would like to contribute, please reach out to us.
-  
