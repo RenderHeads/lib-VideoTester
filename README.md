@@ -147,8 +147,27 @@ Dictionary<string, Configuration> configuration = VideoTesterApi.GetConfiguratio
 
 ```
 
-# Git workflow
+# Development
+
+## Version Control
 Trunk based development is used in this project, and as such, PRs will be squashed and rebased onto `main` when merged.
+
+## Setup
+### Code Styling
+We use `astyle` to format the code correctly. You can install `astyle` by following [these instructions](https://astyle.sourceforge.net/install.html).
+
+Then add a file watcher to your favourite IDE to automatically format your `.cs` files when you save them.
+
+*TODO*: Styling and linting will be added as pre-commit hooks and to the CI.
+
+To format a file:
+```bash
+astyle -n <FILE>
+```
+To format all C# files in the repo:
+```
+find . -iname "*.cs" -not -path "*/obj/*" -not -path "*.xaml.cs" | xargs astyle -n
+```
 
 # Usage and Contribution
 ## Usage License
