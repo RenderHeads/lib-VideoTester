@@ -2,24 +2,24 @@
 using Newtonsoft.Json;
 namespace LibVideoTester.Serialization
 {
-    
-    public class NewtonSoftJsonDeserializer<T> : IDeserializer<T>
+
+public class NewtonSoftJsonDeserializer<T> : IDeserializer<T>
+{
+    public bool TryDeserialize(string contents, out T result)
     {
-        public bool TryDeserialize(string contents, out T result)
+
+        try
         {
-            
-            try
-            {
-                result = JsonConvert.DeserializeObject<T>(contents);
-                return true;
-            }
-            catch
-            {
-             // just supress the error for now  as we assume JSON is not valid?  We should bubble up the error in the future
-            }
-            result = default(T);
-            return false;
+            result = JsonConvert.DeserializeObject<T>(contents);
+            return true;
         }
+        catch
+        {
+            // just supress the error for now  as we assume JSON is not valid?  We should bubble up the error in the future
+        }
+        result = default(T);
+        return false;
     }
+}
 }
 
