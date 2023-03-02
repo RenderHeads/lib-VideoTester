@@ -8,105 +8,96 @@ using LibVideoTester.Serialization;
 using LibVideoTester.Models;
 using LibVideoTester.Factories;
 
-namespace VideoTesterTests
-{
-public class ConfigurationReaderTests
-{
-
-    //A way to generate some mock data for our application so that we get valid json for the application to test against
-    public class MockFileProvider : IFileProvider
-    {
-        private Dictionary<string, string> VideoInfoAsJsonKVP = new Dictionary<string, string>();
-        public MockFileProvider(Dictionary<string, Configuration> mockFiles, bool addGarbage=false)
-        {
-            foreach (var key in mockFiles.Keys)
-            {
-                VideoInfoAsJsonKVP[key] = Newtonsoft.Json.JsonConvert.SerializeObject(mockFiles[key]);
-            }
-            if (addGarbage)
-            {
-                VideoInfoAsJsonKVP["__gargbageFile"] = "GRasdaslkjdas;lkjlasdfdsfwe4234234";
-            }
+namespace VideoTesterTests {
+  public class ConfigurationReaderTests {
+    // A way to generate some mock data for our application so that we get valid json for the
+    // application to test against
+    public class MockFileProvider : IFileProvider {
+      private Dictionary<string, string> VideoInfoAsJsonKVP = new Dictionary<string, string>();
+      public MockFileProvider(Dictionary<string, Configuration> mockFiles,
+                              bool addGarbage = false) {
+        foreach (var key in mockFiles.Keys) {
+          VideoInfoAsJsonKVP[key] = Newtonsoft.Json.JsonConvert.SerializeObject(mockFiles[key]);
         }
-
-        public async Task<string> GetFileContentsAsync(string pathToFile)
-        {
-            if (VideoInfoAsJsonKVP.ContainsKey(pathToFile))
-            {
-                return VideoInfoAsJsonKVP[pathToFile];
-            }
-            return "";
+        if (addGarbage) {
+          VideoInfoAsJsonKVP["__gargbageFile"] = "GRasdaslkjdas;lkjlasdfdsfwe4234234";
         }
+      }
 
-        public string[] GetFullPathToFilesInDirectory(string directoryPath)
-        {
-            return VideoInfoAsJsonKVP.Keys.ToArray();
+      public async Task<string> GetFileContentsAsync(string pathToFile) {
+        if (VideoInfoAsJsonKVP.ContainsKey(pathToFile)) {
+          return VideoInfoAsJsonKVP[pathToFile];
         }
+        return "";
+      }
+
+      public string[] GetFullPathToFilesInDirectory(string directoryPath) {
+        return VideoInfoAsJsonKVP.Keys.ToArray();
+      }
     }
 
-    private Dictionary<string, Configuration> DummyData = new Dictionary<string, Configuration>()
-    {
-        {"/path1", new Configuration("Config 1", new string[]{"hap","h264"}, 2048,1024,new int[]{30,60},1024 )},
-        {"/path2", new Configuration("Config 2", new string[]{"hevc","h264"}, 512,768,new int[]{25},2048 )}
+    private Dictionary<string, Configuration> DummyData = new Dictionary<string, Configuration>() {
+      { "/path1", new Configuration("Config 1",
+                                    new string[] { "hap", "h264" },
+                                    2048,
+                                    1024,
+                                    new int[] { 30, 60 },
+                                    1024) },
+      { "/path2", new Configuration("Config 2",
+                                    new string[] { "hevc", "h264" },
+                                    512,
+                                    768,
+                                    new int[] { 25 },
+                                    2048) }
 
     };
     private MockFileProvider _fileProvider;
 
     private IDeserializer<Configuration> _deserializer;
     [SetUp]
-    public void Setup()
-    {
-        _fileProvider = new MockFileProvider(DummyData);
-        _deserializer = new NewtonSoftJsonDeserializer<Configuration>();
+    public void Setup() {
+      _fileProvider = new MockFileProvider(DummyData);
+      _deserializer = new NewtonSoftJsonDeserializer<Configuration>();
     }
 
     [Test]
-    public void shouldReturn2Configurations()
-    {
-        ConfigurationFactory reader = new ConfigurationFactory(_fileProvider, _deserializer);
-        Assert.AreEqual(0, reader.GetConfigurationCount());
-        reader.ReadConfigurations("/");
-        Assert.AreEqual(2, reader.GetConfigurationCount());
+    public void shouldReturn2Configurations() {
+      ConfigurationFactory reader = new ConfigurationFactory(_fileProvider, _deserializer);
+      Assert.AreEqual(0, reader.GetConfigurationCount());
+      reader.ReadConfigurations("/");
+      Assert.AreEqual(2, reader.GetConfigurationCount());
     }
 
     [Test]
-    public void shouldReturnValidConfigurationAfterReading()
-    {
-        ConfigurationFactory reader = new ConfigurationFactory(_fileProvider, _deserializer);
-        Dictionary<string, Configuration> configuration = reader.GetConfigurations().GetAwaiter().GetResult();
-        Assert.AreEqual(0, configuration.Keys.Count());
+    public void shouldReturnValidConfigurationAfterReading() {
+      ConfigurationFactory reader = new ConfigurationFactory(_fileProvider, _deserializer);
+      Dictionary<string, Configuration> configuration =
+          reader.GetConfigurations().GetAwaiter().GetResult();
+      Assert.AreEqual(0, configuration.Keys.Count());
 
-        reader.ReadConfigurations("/");
-        configuration = reader.GetConfigurations().GetAwaiter().GetResult();
-        Assert.AreEqual(2, configuration.Keys.Count());
+      reader.ReadConfigurations("/");
+      configuration = reader.GetConfigurations().GetAwaiter().GetResult();
+      Assert.AreEqual(2, configuration.Keys.Count());
 
-        foreach (var key in configuration.Keys)
-        {
-
-            Assert.AreEqual(DummyData[key], configuration[key]);
-        }
-
+      foreach (var key in configuration.Keys) {
+        Assert.AreEqual(DummyData[key], configuration[key]);
+      }
     }
 
     [Test]
-    public void shouldGracefullyHandleMalformedJson()
-    {
-        ConfigurationFactory reader = new ConfigurationFactory(new MockFileProvider(DummyData,addGarbage:true), _deserializer);
-        Dictionary<string, Configuration> configuration = reader.GetConfigurations().GetAwaiter().GetResult();
-        Assert.AreEqual(0, configuration.Keys.Count());
-        reader.ReadConfigurations("/");
-        configuration = reader.GetConfigurations().GetAwaiter().GetResult();
-        Assert.AreEqual(2, configuration.Keys.Count());
+    public void shouldGracefullyHandleMalformedJson() {
+      ConfigurationFactory reader = new ConfigurationFactory(
+          new MockFileProvider(DummyData, addGarbage: true), _deserializer);
+      Dictionary<string, Configuration> configuration =
+          reader.GetConfigurations().GetAwaiter().GetResult();
+      Assert.AreEqual(0, configuration.Keys.Count());
+      reader.ReadConfigurations("/");
+      configuration = reader.GetConfigurations().GetAwaiter().GetResult();
+      Assert.AreEqual(2, configuration.Keys.Count());
 
-        foreach (var key in configuration.Keys)
-        {
-
-            Assert.AreEqual(DummyData[key], configuration[key]);
-        }
+      foreach (var key in configuration.Keys) {
+        Assert.AreEqual(DummyData[key], configuration[key]);
+      }
     }
-
-
-
-
-}
+  }
 }
