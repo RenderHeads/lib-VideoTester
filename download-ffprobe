@@ -5,15 +5,15 @@ set -e # exit on failure
 
 zip_file=ffprobe.zip
 if [[ -f $zip_file ]]
-then 
-  echo "zip file already exists"; 
-else 
-  curl -JL https://evermeet.cx/ffmpeg/get/ffprobe/zip -o $zip_file 
+then
+  echo "zip file already exists";
+else
+  curl -JL https://evermeet.cx/ffmpeg/get/ffprobe/zip -o $zip_file
 fi
 
 sig_file="$zip_file.sig"
 if [[ -f $sig_file ]]
-then 
+then
   echo "sig file already exists";
 else
   curl -JL https://evermeet.cx/ffmpeg/get/ffprobe/zip/sig -o $sig_file
@@ -23,7 +23,7 @@ gpg --import evermeet.asc
 gpg --verify $sig_file $zip_file
 
 if [[ ! -d ./SRC/VideoTesterApp/ExternalBinaries/Mac ]]
-then 
+then
   mkdir ./SRC/VideoTesterApp/ExternalBinaries/Mac
 fi
 unzip -o ffprobe -d ./SRC/VideoTesterApp/ExternalBinaries/Mac
